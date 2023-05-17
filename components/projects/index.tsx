@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, FC } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 
 import { TabMenu } from "../../type/project";
 import PostCard from '../../components/postcard';
 
-const Projects: NextPage = ({ posts }) => {
+const Projects: NextPage<{ posts: any[] }> = ({ posts }) => {
   const highLight = "text-blue-700 dark:text-blue-700";
   const [tabFilter, setTabFilter] = useState<String>(TabMenu.All);
   const [postsList, setProjectList] = useState(posts);

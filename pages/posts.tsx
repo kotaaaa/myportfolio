@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import Head from "next/head";
 
 import Projects from "../components/projects";
 
@@ -17,9 +16,6 @@ export const getStaticProps = () => {
       slug,
     };
   });
-  
-  // console.log("ここで2")
-  // console.log("ここで2", posts)
 
   return {
     props: {
@@ -29,7 +25,6 @@ export const getStaticProps = () => {
 };
 
 const Home: NextPage<{posts: any[]}> = ({ posts }) => {
-  // console.log("ここは2？", posts); // ここで出力してみる
   return (
     <>
       <section id="posts">
