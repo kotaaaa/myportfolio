@@ -11,7 +11,7 @@ const Aboutme: NextPage = () => {
   const profileImg = "/profile.jpg";
   const linkedinUrl = "https://www.linkedin.com/in/kota1110/";
   const gitHubUrl = "https://github.com/kotaaaa";
-  const resumePdf = "/resume.pdf";
+  const resumePdf = "https://www.linkedin.com/in/kota1110/overlay/1635523975943/single-media-viewer/?profileId=ACoAACCXYbkBlH15ddf38A1IiwJucgvLEqgG-uo";
 
   return (
     <>
