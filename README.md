@@ -7,21 +7,21 @@
 
 <img align="right" src="./public/readme/dark.png"  style="margin: 25px 0px;">
 
-# Live project 
-https://yk-jp-portfolio.vercel.app/
+<!-- # Live project  -->
+<!-- https://yk-jp-portfolio.vercel.app/ -->
 
 # Usage
 
 ## Clone repository
  run this command to clone this repository
  ```
- git clone git@github.com:yk-jp/portfolio-v2.git
+ git clone git@github.com:kotaaaa/portfolio-v2.git
  ``` 
 
 ## Install Dependencies
 Run following commands in the root directory
 ```
-npm install 
+yarn install 
 ```
 
 ## Start app

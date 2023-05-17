@@ -81,7 +81,7 @@ const Header = () => {
 
   return (
     <>
-      <nav className="bg-white px-2 sm:px-4 py-2.5 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 flex">
+      <nav className="bg-white px-2 sm:px-4 py-2 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 flex">
         <div className="container flex flex-wrap justify-end items-center mx-auto">
           <div className="flex justify-end md:order-2">
             <button

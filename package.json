@@ -17,12 +17,21 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "flowbite": "^1.5.3",
     "flowbite-react": "^0.1.10",
+    "gray-matter": "^4.0.3",
+    "markdown-it": "^13.0.1",
+    "marked": "^5.0.2",
     "next": "12.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "redux": "^4.2.0"
+    "react-markdown": "^8.0.7",
+    "redux": "^4.2.0",
+    "rehype-stringify": "^9.0.3",
+    "remark-parse": "^10.0.1",
+    "remark-rehype": "^10.1.0",
+    "unified": "^10.1.2"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.9",
     "@types/node": "18.7.14",
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",

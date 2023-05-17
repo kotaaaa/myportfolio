@@ -2,15 +2,15 @@ import { ISection } from "../type/section";
 
 const category: ISection[] = [
   {
-    link: "#aboutme",
+    link: "about",
     title: "About me",
   },
   {
-    link: "#projects",
-    title: "Projects",
+    link: "posts",
+    title: "posts",
   },
   {
-    link: "#contact",
+    link: "contact",
     title: "Contact",
   },
 ];
