@@ -4,6 +4,7 @@ import { unified } from 'unified';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import remarkPrism from 'remark-prism';
+import gfm from 'remark-gfm';
 import rehypeStringify from 'rehype-stringify';
 import remarkToc from 'remark-toc';
 import rehypeSlug from 'rehype-slug';
@@ -15,7 +16,7 @@ import rehypeParse from 'rehype-parse';
 import rehypeReact from 'rehype-react';
 import Link from 'next/link';
 
-function MyLink({ children, href }) {
+function MyLink({ children, href }: { children: any, href: any }) {
   if (href === '') href = '/';
   return href.startsWith('/') || href.startsWith('#') ? (
     <Link href={href}>
@@ -28,18 +29,18 @@ function MyLink({ children, href }) {
   );
 }
 
-const MyImage = ({ src, alt }) => {
+const MyImage = ({ src, alt }: {src: string, alt: string}) => {
   return <Image src={src} alt={alt} width="1200" height="700" />;
 };
 
-const toReactNode = (content) => {
+const toReactNode = (content: any) => {
   return unified()
     .use(rehypeParse, {
       fragment: true,
     })
     .use(rehypeReact, {
-      createElement,
-      Fragment,
+      createElement: createElement,
+      Fragment: Fragment,
       components: {
         a: MyLink,
         img: MyImage,
@@ -48,11 +49,12 @@ const toReactNode = (content) => {
     .processSync(content).result;
 };
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: { params: any}) {
   const file = fs.readFileSync(`posts/${params.slug}.md`, 'utf-8');
   const { data, content } = matter(file);
   const result = await unified()
     .use(remarkParse)
+    .use(gfm)
     .use(remarkPrism, {
       plugins: ['line-numbers'],
     })
@@ -80,7 +82,7 @@ export async function getStaticPaths() {
   };
 }
 
-const Post = ({ frontMatter, content, slug }) => {
+const Post = ({ frontMatter, content, slug }: { frontMatter: any, content: any, slug: any }) => {
   return (
     <div className="prose prose-lg py-8 mx-auto max-w-screen-md content-center">
       <div className="border">

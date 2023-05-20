@@ -6,10 +6,10 @@ import Head from "next/head";
 
 const PAGE_SIZE = 8;
 
-const range = (start, end, length = end - start + 1) =>
+const range = (start: number, end: number, length = end - start + 1) =>
   Array.from({ length }, (_, i) => start + i);
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: {params: any}) {
   const current_page = params.page;
   const files = fs.readdirSync("posts");
   const posts = files.map((fileName) => {
@@ -57,7 +57,7 @@ export async function getStaticPaths() {
   };
 }
 
-const Page = ({ posts, pages, current_page }) => {
+const Page = ({ posts, pages, current_page }: { posts:any[], pages:any[], current_page:number }) => {
   return (
     <>
       <Head>
