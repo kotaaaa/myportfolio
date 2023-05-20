@@ -9,7 +9,7 @@ import rehypeStringify from 'rehype-stringify';
 import remarkToc from 'remark-toc';
 import rehypeSlug from 'rehype-slug';
 import Image from 'next/image';
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 
 import { createElement, Fragment } from 'react';
 import rehypeParse from 'rehype-parse';
@@ -35,16 +35,9 @@ const MyImage = ({ src, alt }: {src: string, alt: string}) => {
 
 const toReactNode = (content: any) => {
   return unified()
-    .use(rehypeParse, {
-      fragment: true,
-    })
+    .use(rehypeParse)
     .use(rehypeReact, {
-      createElement: createElement,
-      Fragment: Fragment,
-      components: {
-        a: MyLink,
-        img: MyImage,
-      },
+      createElement,
     })
     .processSync(content).result;
 };
