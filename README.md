@@ -1,6 +1,4 @@
-# portfolio
-
-<h2>This is my portfolio site.</h2>
+# my portfolio site
 
 # Usage
 
@@ -13,7 +11,7 @@ yarn install
 ## Start app
 Run following commands and open http://localhost:3000 in your browser.
 ```
-npm run dev
+yarn dev
 ```
 
 # Tech stack

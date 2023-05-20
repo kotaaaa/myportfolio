@@ -69,10 +69,6 @@ GCP provides a managed service for Kubernetes. This system creates each Kubernet
 -   Multiple tasks can be entered at the same time, separated by newlines, and sending the same text as an existing TODO task name will erase that task from the TODO task.
 -   You can also delete a task all together by sending a specific text string.
 
-## Talk sample
-
-![ed37b3ee-47d7-ab7e-aaca-3c2176cba1be.png](/img/linebot/ed37b3ee-47d7-ab7e-aaca-3c2176cba1be.png)
-
 As for usage, after adding a Line friend, you can add and delete TODOs on the talk screen.
 
 ## System configuration diagram
