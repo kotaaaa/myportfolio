@@ -2,19 +2,21 @@ import { ISection } from "../type/section";
 
 const category: ISection[] = [
   {
-    link: "about",
+    link: "/about",
     title: "About me",
   },
   {
-    link: "posts",
-    title: "posts",
+    link: "/posts",
+    title: "Posts",
   },
   {
-    link: "contact",
+    link: "/contact",
     title: "Contact",
   },
 ];
 
-export default {
+const exportedCategory = {
   category,
 };
+
+export default exportedCategory;

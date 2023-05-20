@@ -3,20 +3,68 @@ import matter from 'gray-matter';
 import { unified } from 'unified';
 import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
+import remarkPrism from 'remark-prism';
 import rehypeStringify from 'rehype-stringify';
+import remarkToc from 'remark-toc';
+import rehypeSlug from 'rehype-slug';
 import Image from 'next/image';
+import { useState, useEffect } from "react";
+
+import { createElement, Fragment } from 'react';
+import rehypeParse from 'rehype-parse';
+import rehypeReact from 'rehype-react';
+import Link from 'next/link';
+
+function MyLink({ children, href }) {
+  if (href === '') href = '/';
+  return href.startsWith('/') || href.startsWith('#') ? (
+    <Link href={href}>
+      <a>{children}</a>
+    </Link>
+  ) : (
+    <a href={href} target="_blank" rel="noopener noreferrer">
+      {children}
+    </a>
+  );
+}
+
+const MyImage = ({ src, alt }) => {
+  return <Image src={src} alt={alt} width="1200" height="700" />;
+};
+
+const toReactNode = (content) => {
+  return unified()
+    .use(rehypeParse, {
+      fragment: true,
+    })
+    .use(rehypeReact, {
+      createElement,
+      Fragment,
+      components: {
+        a: MyLink,
+        img: MyImage,
+      },
+    })
+    .processSync(content).result;
+};
 
 export async function getStaticProps({ params }) {
   const file = fs.readFileSync(`posts/${params.slug}.md`, 'utf-8');
   const { data, content } = matter(file);
-
   const result = await unified()
     .use(remarkParse)
-    .use(remarkRehype)
-    .use(rehypeStringify)
+    .use(remarkPrism, {
+      plugins: ['line-numbers'],
+    })
+    .use(remarkToc)
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeSlug)
+    .use(rehypeStringify, { allowDangerousHtml: true })
     .process(content);
 
-  return { props: { frontMatter: data, content: result.toString() } };
+  return {
+    props: { frontMatter: data, content: result.toString(), slug: params.slug },
+  };
 }
 
 export async function getStaticPaths() {
@@ -32,7 +80,7 @@ export async function getStaticPaths() {
   };
 }
 
-const Post = ({ frontMatter, content }) => {
+const Post = ({ frontMatter, content, slug }) => {
   return (
     <div className="prose prose-lg py-8 mx-auto max-w-screen-md content-center">
       <div className="border">
@@ -45,7 +93,7 @@ const Post = ({ frontMatter, content }) => {
       </div>
       <h1 className="mt-12">{frontMatter.title}</h1>
       <span>{frontMatter.date}</span>
-      <div dangerouslySetInnerHTML={{ __html: content }}></div>
+      {toReactNode(content)}
     </div>
   );
 };

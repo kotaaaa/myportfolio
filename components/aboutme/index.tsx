@@ -5,13 +5,15 @@ import Image from "next/image";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin, faGithubSquare } from "@fortawesome/free-brands-svg-icons";
-import { faFile } from "@fortawesome/free-solid-svg-icons";
+import { faFile, faGraduationCap } from "@fortawesome/free-solid-svg-icons";
 
 const Aboutme: NextPage = () => {
   const profileImg = "/profile.jpg";
   const linkedinUrl = "https://www.linkedin.com/in/kota1110/";
   const gitHubUrl = "https://github.com/kotaaaa";
+  const researchUrl = "https://kk1110.com/rhp";
   const resumePdf = "https://www.linkedin.com/in/kota1110/overlay/1635523975943/single-media-viewer/?profileId=ACoAACCXYbkBlH15ddf38A1IiwJucgvLEqgG-uo";
+
 
   return (
     <>
@@ -23,16 +25,16 @@ const Aboutme: NextPage = () => {
         <div className="y-8 md:py-16 px-4 mx-auto max-w-screen-md flex flex-col-reverse md:flex-row content-center">
           <div className="md:basis-4/6 pt-9 content-center text-gray-900 dark:text-gray-300">
             <div>
-              <p className="text-center text-3xl">Hi there, It's Kota</p>
+              <p className="text-center text-3xl">Hey, It's Kota</p>
               <p className="text-center text-xl">Full Stack Developer</p>
             </div>
-            <div className="flex justify-center content-center py-3 md:py-6 dark:text-gray-400">
+            <div className="flex justify-center content-center py-4 md:py-6 dark:text-gray-400">
               <Link href={linkedinUrl}>
                 <button>
                   <FontAwesomeIcon
                     icon={faLinkedin}
                     size="2xl"
-                    className="hover:text-blue-700"
+                    className="px-4 hover:text-blue-700"
                   />
                 </button>
               </Link>
@@ -41,7 +43,16 @@ const Aboutme: NextPage = () => {
                   <FontAwesomeIcon
                     icon={faGithubSquare}
                     size="2xl"
-                    className="px-8 md:px-16 hover:text-blue-700"
+                    className="px-4 hover:text-blue-700"
+                  />
+                </button>
+              </Link>
+              <Link href={researchUrl}>
+                <button>
+                  <FontAwesomeIcon
+                    icon={faGraduationCap}
+                    size="2xl"
+                    className="px-4 hover:text-blue-700"
                   />
                 </button>
               </Link>
@@ -50,7 +61,7 @@ const Aboutme: NextPage = () => {
                   <FontAwesomeIcon
                     icon={faFile}
                     size="2xl"
-                    className="hover:text-blue-700"
+                    className="px-4 hover:text-blue-700"
                   />
                 </button>
               </Link>
