@@ -1,6 +1,6 @@
 ---
 title: Markdown cheet sheet
-date: '2020-06-23 22:12:03'
+date: '2020-06-23'
 techStack: ["Markdown"]
 category: Other
 background: '#696969'

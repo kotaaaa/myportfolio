@@ -1,6 +1,6 @@
 ---
 title: How to be Atcoder Green Level
-date: '2021-09-10 00:00:00'
+date: '2021-09-10'
 techStack: ["Python", "Algorizm", "Leetcode"]
 category: Python
 background: '#4169e1'

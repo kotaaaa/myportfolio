@@ -1,6 +1,6 @@
 ---
 title: Airflow and Cloud Composer Basic
-date: '2022-06-25 18:46:37'
+date: '2022-06-25'
 techStack: ["Airflow", "Cloud Composer", "GCP"]
 background: '#4169e1'
 image: img/airflow-basic/airflow_architecture.png

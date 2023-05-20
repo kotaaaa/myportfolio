@@ -1,6 +1,6 @@
 ---
 title: Vue.js vs Angular
-date: '2020-08-31 18:46:37'
+date: '2020-08-31'
 techStack: ["Vue", "Angular"]
 category: Frontend
 background: '#9400d3'

@@ -1,6 +1,6 @@
 ---
 title: Template of Extracting API response data to BigQuery with Terraform
-date: '2022-08-30 00:00:00'
+date: '2022-08-30'
 techStack: ["Python", "GCP", "BigQuery", "Terraform", "Cloud PubSub", "Cloud Functions"]
 category: Cloud Computing
 background: '#ffa500'
