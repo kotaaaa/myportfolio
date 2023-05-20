@@ -5,7 +5,7 @@
 # Usage
 
 ## Install Dependencies
-Run following commands in the root directory. node version is `v18.16.0`
+Run following commands in the root directory. node version is `v16.20.0`
 ```
 yarn install 
 ```
