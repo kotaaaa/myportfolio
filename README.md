@@ -1,5 +1,3 @@
-# my portfolio site
-
 # Usage
 
 ## Install Dependencies
