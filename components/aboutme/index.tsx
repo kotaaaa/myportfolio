@@ -12,7 +12,7 @@ const Aboutme: NextPage = () => {
   const linkedinUrl = "https://www.linkedin.com/in/kota1110/";
   const gitHubUrl = "https://github.com/kotaaaa";
   const researchUrl = "https://kk1110.com/rhp";
-  const resumePdf = "https://www.linkedin.com/in/kota1110/overlay/1635523975943/single-media-viewer/?profileId=ACoAACCXYbkBlH15ddf38A1IiwJucgvLEqgG-uo";
+  const resumePdf = "https://www.linkedin.com/in/kota1110/details/featured/1635527084448/single-media-viewer/?profileId=ACoAACCXYbkBlH15ddf38A1IiwJucgvLEqgG-uo";
 
 
   return (
