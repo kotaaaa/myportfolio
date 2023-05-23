@@ -5,7 +5,7 @@ import matter from 'gray-matter';
 
 import Posts from "../components/posts";
 
-const PAGE_SIZE = 8;
+const PAGE_SIZE = 30;
 
 const range = (start: number, end: number, length = end - start + 1) =>
   Array.from({ length }, (_, i) => start + i);

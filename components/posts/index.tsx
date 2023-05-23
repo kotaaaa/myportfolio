@@ -32,7 +32,7 @@ const Posts: NextPage<{ posts: any[], pages: any[], allTeckStacks: string[] }> =
       setPostList(defalutPosts)
       return;      
     }
-    const posts = defalutPosts.filter((data) => { 
+    const posts = defalutPosts.filter((data) => {
       // AND condition for teck stack
       return newTabFilter.every(item => data.frontMatter.techStack.includes(item));
     });
@@ -45,7 +45,7 @@ const Posts: NextPage<{ posts: any[], pages: any[], allTeckStacks: string[] }> =
         <title>Posts - Kota Portfolio</title>
       </Head>
       <section className="bg-white dark:bg-gray-900 h-fit py-8">
-        <div className="py-8 mx-auto max-w-screen-md content-center">
+        <div className="py-8 mx-auto max-w-screen-lg content-center">
           <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-gray-300">
                 Posts
           </h2>
@@ -66,12 +66,12 @@ const Posts: NextPage<{ posts: any[], pages: any[], allTeckStacks: string[] }> =
             })}
           </div>
           <div className="my-2">
-            <div className="grid grid-cols-2 gap-20 py-4 mx-auto max-w-screen-md content-center">
+            <div className="grid grid-cols-3 gap-20 py-4 mx-auto max-w-screen-lg content-center">
               {postsList.map((post) => (
                 <PostCard key={post.slug} post={post} />
               ))}
             </div>
-            <Pagination pages={pages} />
+            {/* <Pagination pages={pages} /> */}
           </div>
         </div>
       </section>
