@@ -27,7 +27,7 @@ const PostCard = ({ post }:{ post: any}) => {
                   return (
                     <span
                       key={`techStack-${name}-${idx}`}
-                      className="text-xs font-semibold inline-block py-1 px-1 mx-1 rounded text-blue-600 bg-blue-200 last:mr-0 mr-1"
+                      className="text-xs font-medium inline-block py-1 px-1.5 mx-1 rounded-full text-blue-600 bg-blue-100 last:mr-0 mr-1"
                     >
                       {name}
                     </span>
