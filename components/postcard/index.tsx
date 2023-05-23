@@ -15,7 +15,7 @@ const PostCard = ({ post }:{ post: any}) => {
             />
           </div>
           <div className="px-0 py-4">
-            <h1 className="font-bold text-lg">{post.frontMatter.title}</h1>
+            <h1 className="font-bold text-base">{post.frontMatter.title}</h1>
             <span>{post.frontMatter.date}</span>
           </div>
           {post.frontMatter.techStack && (
@@ -27,7 +27,7 @@ const PostCard = ({ post }:{ post: any}) => {
                   return (
                     <span
                       key={`techStack-${name}-${idx}`}
-                      className="text-xs font-semibold inline-block py-1 px-2 mx-1 rounded text-blue-600 bg-blue-200 last:mr-0 mr-1"
+                      className="text-xs font-medium inline-block py-1 px-1.5 mx-1 rounded-full text-blue-600 bg-blue-100 last:mr-0 mr-1"
                     >
                       {name}
                     </span>
