@@ -9,7 +9,6 @@ import rehypeStringify from 'rehype-stringify';
 import remarkToc from 'remark-toc';
 import rehypeSlug from 'rehype-slug';
 import Image from 'next/image';
-// import { useState, useEffect } from "react";
 
 import { createElement, Fragment } from 'react';
 import rehypeParse from 'rehype-parse';
