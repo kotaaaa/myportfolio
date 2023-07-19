@@ -3,9 +3,8 @@ import type { NextPage } from "next";
 import Head from "next/head";
 
 import PostCard from '../../components/postcard';
-import Pagination from '../../components/pagination';
 
-const Posts: NextPage<{ posts: any[], pages: any[], allTeckStacks: string[] }> = ({ posts, pages, allTeckStacks }) => {
+const Posts: NextPage<{ posts: any[], allTeckStacks: string[] }> = ({ posts, allTeckStacks }) => {
   const highLight = "font-semibold bg-blue-200";
   const defalutPosts = posts
   const [tabFilter, setTabFilter] = useState<string[]>([]);
@@ -71,7 +70,6 @@ const Posts: NextPage<{ posts: any[], pages: any[], allTeckStacks: string[] }> =
                 <PostCard key={post.slug} post={post} />
               ))}
             </div>
-            {/* <Pagination pages={pages} /> */}
           </div>
         </div>
       </section>

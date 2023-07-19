@@ -21,7 +21,7 @@ const Aboutme: NextPage = () => {
         <title>About me - Kota Portfolio</title>
       </Head>
 
-      <section className="bg-white dark:bg-gray-900 h-screen py-16">
+      <section className="bg-white dark:bg-gray-900 py-8">
         <div className="y-8 md:py-16 px-4 mx-auto max-w-screen-md flex flex-col-reverse md:flex-row content-center">
           <div className="md:basis-4/6 pt-9 content-center text-gray-900 dark:text-gray-300">
             <div>
@@ -78,8 +78,8 @@ const Aboutme: NextPage = () => {
             />
           </div>
         </div>
-        <div className="y-8 md:py-16 px-4 mx-auto max-w-screen-md justify-center content-center">
-          <p className="mb-4 lg:mb-10 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
+        <div className="y-8 px-4 mx-auto max-w-screen-md justify-center content-center">
+          <p className="lg:mb-10 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
             Hi! I am Kota Kawaguchi who is Japanese Software Engineer.
             My main field is Backend/DEV-OPS/Cloud/Data Engineering.
           </p>

@@ -15,7 +15,7 @@ const Contact: NextPage = () => {
           <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-gray-300">
             Contact
           </h2>
-          <p className="mb-4 lg:mb-10 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
+          <p className="lg:mb-10 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
             Thank you for taking the time to check out my portfolio website.
             If there's anything you'd like to share, I encourage you to reach out to me.
             Your thoughts, critiques, and ideas are always welcome!
