@@ -12,7 +12,6 @@ const Aboutme: NextPage = () => {
   const linkedinUrl = "https://www.linkedin.com/in/kota1110/";
   const gitHubUrl = "https://github.com/kotaaaa";
   const researchUrl = "https://kotaaaa.github.io/rhp/";
-  const resumePdf = "https://www.linkedin.com/in/kota1110/details/featured/1635527084448/single-media-viewer/?profileId=ACoAACCXYbkBlH15ddf38A1IiwJucgvLEqgG-uo";
 
 
   return (
@@ -51,15 +50,6 @@ const Aboutme: NextPage = () => {
                 <button>
                   <FontAwesomeIcon
                     icon={faGraduationCap}
-                    size="2xl"
-                    className="px-4 hover:text-blue-700"
-                  />
-                </button>
-              </Link>
-              <Link href={resumePdf}>
-                <button>
-                  <FontAwesomeIcon
-                    icon={faFile}
                     size="2xl"
                     className="px-4 hover:text-blue-700"
                   />
