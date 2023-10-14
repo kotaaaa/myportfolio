@@ -34,7 +34,9 @@ const MyImage = ({ src, alt }: {src: string, alt: string}) => {
 
 const toReactNode = (content: any) => {
   return unified()
-    .use(rehypeParse)
+    .use(rehypeParse, {
+      fragment: true,
+    })
     .use(rehypeReact, {
       createElement,
     })
