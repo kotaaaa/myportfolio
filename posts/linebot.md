@@ -1,9 +1,9 @@
 ---
 title: TODO management Linebot with GKE & Flask
-date: '2022-04-21'
+date: "2022-04-21"
 techStack: ["Kubernetes", "Flask", "Python"]
 category: Kubernetes
-background: '#008000'
+background: "#008000"
 image: img/linebot/architecture_linebot.drawio.svg
 ---
 
@@ -17,16 +17,16 @@ The main purpose of this workshop is to build a system from scratch using Kubern
 
 However, there are also advantages to adopting Kubernetes, most notably
 
--   **Easy to scale out** when the number of requests increases.
-    -Scale-out is easily achieved by simply changing the Pod settings (number of replicas, etc.). No need to spend time building new servers every time you want to scale up your resources.
--   When the number of requests is low, **it is possible to operate the service with a minimum of resources**.
-    -\> For example, if you have just launched a service and the number of user requests is low, you can operate with as few pods as possible, such as one pod. In many public clouds, the amount charged is determined by the number of Nodes and Pods used, so resources can be adjusted according to the system load.
+- **Easy to scale out** when the number of requests increases.
+  -Scale-out is easily achieved by simply changing the Pod settings (number of replicas, etc.). No need to spend time building new servers every time you want to scale up your resources.
+- When the number of requests is low, **it is possible to operate the service with a minimum of resources**.
+  -\> For example, if you have just launched a service and the number of user requests is low, you can operate with as few pods as possible, such as one pod. In many public clouds, the amount charged is determined by the number of Nodes and Pods used, so resources can be adjusted according to the system load.
 
-This article introduces a system that uses a set of objects that you might use when deploying with Kubernetes, such as `Deployment` and `Service`, to create a **LineBot** for TODO management.
+This article introduces a system that uses a set of objects that you might use when deploying with Kubernetes, such as **Deployment** and **Service**, to create a **LineBot** for TODO management.
 The logic of the application is simplified, so it will be easy to focus on how to write Kubernetes and catch up.
 
-In addition, you can use `docker-compose` to [**launch the application locally**](#launch in a local environment).
-You can compare the difference between the container integration method using `docker-compose` and the Kubernetes method with hands-on experience. [^1]
+In addition, you can use **docker-compose** to [**launch the application locally**](#launch in a local environment).
+You can compare the difference between the container integration method using **docker-compose** and the Kubernetes method with hands-on experience. [^1]
 
 ## What is Line
 
@@ -35,9 +35,9 @@ Linebot is messenger bot application that developers can develop.
 
 # Entire source code
 
-Except for some files such as `secret.yaml`, the entire source code is available, so please refer to it accordingly.
+Except for some files such as **secret.yaml**, the entire source code is available, so please refer to it accordingly.
 
--   [github/kotaaaa/linebot](https://github.com/kotaaaa/linebot)
+- [github/kotaaaa/linebot](https://github.com/kotaaaa/linebot)
 
 ## List of technologies and versions used
 
@@ -65,9 +65,9 @@ GCP provides a managed service for Kubernetes. This system creates each Kubernet
 
 # TODO Management LineBot Requirements.
 
--   Send a text and it will tell you a list of tasks including that task.
--   Multiple tasks can be entered at the same time, separated by newlines, and sending the same text as an existing TODO task name will erase that task from the TODO task.
--   You can also delete a task all together by sending a specific text string.
+- Send a text and it will tell you a list of tasks including that task.
+- Multiple tasks can be entered at the same time, separated by newlines, and sending the same text as an existing TODO task name will erase that task from the TODO task.
+- You can also delete a task all together by sending a specific text string.
 
 As for usage, after adding a Line friend, you can add and delete TODOs on the talk screen.
 
@@ -75,19 +75,19 @@ As for usage, after adding a Line friend, you can add and delete TODOs on the ta
 
 ![architecture_linebot.svg](/img/linebot/architecture_linebot.drawio.svg)
 
-We built a 3-tier system where App server, Web server, and DB server are set up on separate `Pod` (containers).
-The communication between the `Services` uses `metadata` and name resolution inside Kubernetes.
+We built a 3-tier system where App server, Web server, and DB server are set up on separate **Pod** (containers).
+The communication between the **Services** uses **metadata** and name resolution inside Kubernetes.
 The GCP VPC network reserves a global static IP address and its own domain for it.
 The domain registrar will link them using DNS settings with A records in the DNS settings.
-The request goes through the `domain`-> `global IP address(Ingress)` -> `Service(linebot-nginx)` to the pod where the container is running and is processed by the container.
+The request goes through the **domain** -> **global IP address(Ingress)** -> **Service(linebot-nginx)** to the pod where the container is running and is processed by the container.
 
 The **GCP services** used are.
 
--   Google Kubernetes Engine (Node runs on Google Compute Engine)
--   Google Cloud Load Balancing
--   Google Domain
--   Google VPC network
--   Google Artifact Registry
+- Google Kubernetes Engine (Node runs on Google Compute Engine)
+- Google Cloud Load Balancing
+- Google Domain
+- Google VPC network
+- Google Artifact Registry
 
 # Directory Structure
 
@@ -132,7 +132,7 @@ service.yaml │ └── uwsgi.ini
 
 # Start up in local environment
 
-The `docker-compose` command allows you to launch App, Web, and DB containers in a local environment.
+The **docker-compose** command allows you to launch App, Web, and DB containers in a local environment.
 
 ```shell
 $ pwd
@@ -152,7 +152,7 @@ The implementation of Line Developers registration and Linebot CallBack is not c
 
 ## Obtain SSL certificate for public domain
 
-Refer to [Using Google Managed SSL Certificates](https://cloud.google.com/kubernetes-engine/docs/how-to/managed-certs#gcloud) using the `Ingress` object. Google Managed SSL Certificate built.
+Refer to [Using Google Managed SSL Certificates](https://cloud.google.com/kubernetes-engine/docs/how-to/managed-certs#gcloud) using the **Ingress** object. Google Managed SSL Certificate built.
 
 ### [Reserving a static external global IP address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address?)
 
@@ -160,18 +160,18 @@ Refer to [Using Google Managed SSL Certificates](https://cloud.google.com/kubern
 gcloud compute addresses create linebot-ingress --global --ip-version IPV4
 ```
 
-For `linebot-ingress`, enter the name of an IP address of your choice. The address you create here must be a global type, not a region type.
-This will be specified later in the `Ingress` object in global-static-ip-name, so make a note of it.
+For **linebot-ingress**, enter the name of an IP address of your choice. The address you create here must be a global type, not a region type.
+This will be specified later in the **Ingress** object in global-static-ip-name, so make a note of it.
 
 ### Obtaining a domain for public use
 
-Obtain a domain name for public use. The author uses [Google Domain](https://domains.google/intl/ja_jp/?gclsrc=ds&gclsrc=ds). The obtained domain name is also specified in the `Ingress` object later.
+Obtain a domain name for public use. The author uses [Google Domain](https://domains.google/intl/ja_jp/?gclsrc=ds&gclsrc=ds). The obtained domain name is also specified in the **Ingress** object later.
 
 ### DNS settings for the acquired domain
 
 To link the acquired domain to the reserved static address, modify the DNS settings.
 In this case, we will add a new A record since we want to link the IP address to the domain.
-If you are using Google Domain, you can add a new record from `Google Domain` -> `DNS` -> `Custom Records` -> `Manage Custom Records`.
+If you are using Google Domain, you can add a new record from **Google Domain** -> **DNS** -> **Custom Records** -> **Manage Custom Records**.
 ! [image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/239544/4df1f1b7-48af-a994-061c-82202d04c4cb.png)
 
 TTL is set to the default of 1 hour.
@@ -192,8 +192,8 @@ Verify operation (+ delete GCP cluster)
 
 ## Create GCP Artifact Registry
 
-Create a GCP Artifact Registry with GCP project ID in `PROJECT_ID`.
-The Artifact Registry is the location where the Docker Images created by Build are stored. You will later specify the images in the Artifact Registry in the `Deployment` object.
+Create a GCP Artifact Registry with GCP project ID in **PROJECT_ID**
+The Artifact Registry is the location where the Docker Images created by Build are stored. You will later specify the images in the Artifact Registry in the **Deployment** object.
 
 ```shell
 $ gcloud artifacts repositories create linebot-repo \}
@@ -209,14 +209,14 @@ $ gcloud artifacts repositories create linebot-repo \}
 gcloud container clusters create linebot-gke --num-nodes 3 --zone asia-northeast1-a
 ```
 
-Here we have created a cluster called `linebot-gke`.
+Here we have created a cluster called **linebot-gke**
 
 ```shell
 $ kubectl get nodes
 NAME STATUS ROLES AGE VERSION
-gke-linebot-gke-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx Ready <none> 2d v1.21.9-gke.1002
-gke-linebot-gke-yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy Ready <none> 2d v1.21.9-gke.1002
-gke-linebot-gke-zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz Ready <none> 2d v1.21.9-gke.1002
+gke-linebot-gke-xxxxxxxxxx Ready <none> 2d v1.21.9-gke.1002
+gke-linebot-gke-yyyyyyyyyy Ready <none> 2d v1.21.9-gke.1002
+gke-linebot-gke-zzzzzzzzzz Ready <none> 2d v1.21.9-gke.1002
 ```
 
 ## Build Dockerfile and save created image to GCP Artifact Registry
@@ -224,8 +224,8 @@ gke-linebot-gke-zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz Ready <none> 2d v1.21.9-gke.1002
 ### Dockerfile
 
 Launch the Flask application inside a Docker container using uwsgi. Use port 5000 for the container.
-From Nginx, access the Flask application with `http://app-server:5000`.
-The `metadata` in the later `deployment` allows for `app-server` name resolution inside Kubernetes and communication between Nginx<=>uwsgi(Flask).
+From Nginx, access the Flask application with **http://app-server:5000**
+The **metadata** in the later **deployment** allows for **app-server** name resolution inside Kubernetes and communication between Nginx<=>uwsgi(Flask).
 
 #### app/Dockerfile
 
@@ -242,7 +242,7 @@ CMD ["uwsgi","--ini","/app/uwsgi.ini"].
 
 ```
 
-Nginx default settings in `./default.conf` file. The `location/` directive in `location/`passes the request to Flask for all accesses under`/` for http communication (via Port 80).
+Nginx default settings in **./default.conf** file. The **location/** directive in **location/`passes the request to Flask for all accesses under`/** for http communication (via Port 80).
 
 #### web/Dockerfile
 
@@ -301,32 +301,32 @@ The k8s objects used this time are as follows.
 | PersistentVolume      | Allocate volume mounts on a Kubernetes cluster                                            |
 | PersistentVolumeClaim | Describes the resources actually needed for PersistentVolume                              |
 
-In addition, the `metadata` of each application in this system is as follows.
+In addition, the **metadata** of each application in this system is as follows.
 
--   App(Flask): `app-server`.
--   Web(Nginx): `linebot-nginx`.
--   DB(Mysql): `mysql-db`.
+- App(Flask): **app-server**
+- Web(Nginx): **linebot-nginx**
+- DB(Mysql): **mysql-db**
 
-First, `Deployment` and `Service` are required for App, Web and DB applications.
-The `Deployment` defines the state of the `Pod`, the smallest unit in which each container is executed.
-The `Service` defines the network settings required for the `Pod` to communicate with **objects** outside and inside the cluster.
+First, **Deployment** and **Service** are required for App, Web and DB applications.
+The **Deployment** defines the state of the **Pod**, the smallest unit in which each container is executed.
+The **Service** defines the network settings required for the **Pod** to communicate with **objects** outside and inside the cluster.
 
-The `ConfigMap` and `Secret` are set up to hold DB user names and passwords. The `ConfigMap` holds parameters that are not particularly sensitive to be disclosed, whereas the `Secret` holds `sensitive information`.
-We also use `PersistentVolume` and `PersistentVolumeClaim` to allocate Mysql persistent volumes on a Kubernetes cluster.
-The data in the `Pod` created by Kubernetes will disappear when the `Pod` is deleted, so the DB data will be initialized on each restart.
-To ensure that the mysql data is not lost when the `Pod` is deleted, we use a `PersistentVolume` object to make the data persistent.
-If you are going to build a DB server for a full-scale production environment, it is recommended to use a managed service such as [**Cloud SQL**](https://cloud.google.com/sql/docs/mysql). Since the primary purpose of this system is learning, the system configuration is as shown above.
+The **ConfigMap** and **Secret** are set up to hold DB user names and passwords. The **ConfigMap** holds parameters that are not particularly sensitive to be disclosed, whereas the **Secret** holds **sensitive information**
+We also use **PersistentVolume** and **PersistentVolumeClaim** to allocate Mysql persistent volumes on a Kubernetes cluster.
+The data in the **Pod** created by Kubernetes will disappear when the **Pod** is deleted, so the DB data will be initialized on each restart.
+To ensure that the mysql data is not lost when the **Pod** is deleted, we use a **PersistentVolume** object to make the data persistent.
+If you are going to build a DB server for a full-scale production environment, it is recommended to use a managed service such as [**Cloud SQL** ](https://cloud.google.com/sql/docs/mysql). Since the primary purpose of this system is learning, the system configuration is as shown above.
 
-It is possible to use a `Loadbalancer` type of `Service` instead of `Ingress` to publish the application to the outside world.
-In this case, we set it up to manage SSL certificate settings. In `Ingress`, refer to the `ManagedCertificate` object.
+It is possible to use a **Loadbalancer** type of **Service** instead of **Ingress** to publish the application to the outside world.
+In this case, we set it up to manage SSL certificate settings. In **Ingress**, refer to the **ManagedCertificate** object.
 
 ### [Deployment](https://kubernetes.io/ja/docs/concepts/workloads/controllers/deployment/)
 
 > Deployment provides the ability to declaratively update Pods and ReplicaSets. in Deployment, you describe the ideal state, and the Deployment controller will change the current state to the ideal state at a specified frequency. By defining a Deployment, you can create a new ReplicaSet or delete an existing Deployment and apply all resources in the new Deployment.
 
-The `Deployment` defines the state that the `Pod` should be in. If a `Pod` is deleted or an internal error occurs, Kubernetes will recreate the `Pod` based on the `Deployment` description. In our system, we use the `Nginx`, `Flask` and `Mysql` containers to describe the state of the `Pod` with each.
+The **Deployment** defines the state that the **Pod** should be in. If a **Pod** is deleted or an internal error occurs, Kubernetes will recreate the **Pod** based on the **Deployment** description. In our system, we use the **Nginx**, **Flask** and **Mysql** containers to describe the state of the **Pod** with each.
 
-The `Deployment` is a declarative object that defines the ideal state of a `Pod` and is not an object that actually consumes CPU or memory resources. Therefore, in the figure, the arrow points from outside the `Node` to the `Pod`.
+The **Deployment** is a declarative object that defines the ideal state of a **Pod** and is not an object that actually consumes CPU or memory resources. Therefore, in the figure, the arrow points from outside the **Node** to the **Pod**
 
 ###### web/deployment.yaml
 
@@ -334,23 +334,23 @@ The `Deployment` is a declarative object that defines the ideal state of a `Pod`
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: linebot-nginx
+  name: linebot-nginx
 spec:
-    selector:
-        matchLabels:
-            app: linebot-nginx
-    replicas: 1
-    template:
-        metadata:
-            labels:
-                app: linebot-nginx
-        spec:
-            containers:
-                - name: linebot-nginx
-                  image: asia-northeast1-docker.pkg.dev/gcp-compute-engine-343613/linebot-repo/linebot-nginx:1.0.0
-                  imagePullPolicy: Always
-                  ports:
-                      - containerPort: 80
+  selector:
+    matchLabels:
+      app: linebot-nginx
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: linebot-nginx
+    spec:
+      containers:
+        - name: linebot-nginx
+          image: asia-northeast1-docker.pkg.dev/gcp-compute-engine-343613/linebot-repo/linebot-nginx:1.0.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
 ```
 
 ###### app/deployment.yaml
@@ -359,23 +359,23 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: app-server
+  name: app-server
 spec:
-    selector:
-        matchLabels:
-            app: app-server
-    replicas: 1
-    template:
-        metadata:
-            labels:
-                app: app-server
-        spec:
-            containers:
-                - name: app-server
-                  image: asia-northeast1-docker.pkg.dev/gcp-compute-engine-343613/linebot-repo/app-server:1.0.0
-                  imagePullPolicy: Always
-                  ports:
-                      - containerPort: 5000
+  selector:
+    matchLabels:
+      app: app-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: app-server
+    spec:
+      containers:
+        - name: app-server
+          image: asia-northeast1-docker.pkg.dev/gcp-compute-engine-343613/linebot-repo/app-server:1.0.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
 ```
 
 ###### db/deployment.yaml
@@ -384,53 +384,53 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: mysql-db
+  name: mysql-db
 spec:
-    selector:
-        matchLabels:
-            app: mysql-db
-    strategy:
-        type: Recreate
-    template:
-        metadata:
-            labels:
-                app: mysql-db
-        spec:
-            containers:
-                - image: mysql:5.7
-                  name: mysql
-                  resources:
-                  env:
-                      - name: MYSQL_ROOT_PASSWORD
-                        value: password
-                      - name: MYSQL_DATABASE
-                        value: linebot
-                      - name: MYSQL_USER
-                        value: kota1110
-                      - name: MYSQL_PASSWORD
-                        valueFrom:
-                            secretKeyRef:
-                                name: pass-secret
-                                key: password
-                  ports:
-                      - containerPort: 3306
-                        name: mysql
-                  volumeMounts:
-                      - name: mysql-persistent-storage
-                        mountPath: /var/lib/mysql
-                      - name: init-sql-configmap
-                        mountPath: /docker-entrypoint-initdb.d
-            volumes:
-                - name: mysql-persistent-storage
-                  persistentVolumeClaim:
-                      claimName: mysql-pv-claim
-                      readOnly: false
-                - name: init-sql-configmap
-                  configMap:
-                      name: init-db-sql
-                      items:
-                          - key: init.sql
-                            path: init.sql
+  selector:
+    matchLabels:
+      app: mysql-db
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql-db
+    spec:
+      containers:
+        - image: mysql:5.7
+          name: mysql
+          resources:
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: password
+            - name: MYSQL_DATABASE
+              value: linebot
+            - name: MYSQL_USER
+              value: kota1110
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pass-secret
+                  key: password
+          ports:
+            - containerPort: 3306
+              name: mysql
+          volumeMounts:
+            - name: mysql-persistent-storage
+              mountPath: /var/lib/mysql
+            - name: init-sql-configmap
+              mountPath: /docker-entrypoint-initdb.d
+      volumes:
+        - name: mysql-persistent-storage
+          persistentVolumeClaim:
+            claimName: mysql-pv-claim
+            readOnly: false
+        - name: init-sql-configmap
+          configMap:
+            name: init-db-sql
+            items:
+              - key: init.sql
+                path: init.sql
 ```
 
 ### [Service](https://kubernetes.io/ja/docs/concepts/services-networking/service/)
@@ -438,17 +438,15 @@ spec:
 > An abstract way to expose an application running in a set of Pods as a network service.
 > There is no need for the user to modify the application to use the service discovery mechanism, which is unfamiliar to Kubernetes. Kubernetes can provide Pods with their own IP address assignment, a single DNS name for a set of Pods, and load balancing for that set of Pods.
 
-The `Service` describes the parameters that control communication between the `Pods`. In `Deployment`, `Pods` are not allowed to communicate with the outside world. The `Service` describes the network between `Pods` and provides a name or IP address (in case of `LoadBalancer` type) that can be referred to from the outside, thus acting as a network bridge between the outside and inside of Kubernetes.
+The **Service** describes the parameters that control communication between the **Pods** In **Deployment**, **Pods** are not allowed to communicate with the outside world. The **Service** describes the network between **Pods** and provides a name or IP address (in case of **LoadBalancer** type) that can be referred to from the outside, thus acting as a network bridge between the outside and inside of Kubernetes.
 
-The `Service` provides different network configurations identified by Type.
-Typical examples are `ClusterIP`, `LoadBalancer`, and `NodePort`.
-The differences between them are summarized very clearly in the article at [Link](https://cstoku.dev/posts/2018/k8sdojo-09/).
-The `ClusterIP` issues an IP address that cannot be accessed from outside the cluster. On the other hand, `NodePort` and `Service` of `LoadBalancer` can be accessed from outside the cluster. The difference between `NodePort` and `LoadBalancer` is that `NodePort`is used to access each node individually, and `LoadBalancer` is used when the load balancer distributes the access to each node.
+The **Service** provides different network configurations identified by Type.
+Typical examples are **ClusterIP**, **LoadBalancer**, and **NodePort** The differences between them are summarized very clearly in the article at [Link](https://cstoku.dev/posts/2018/k8sdojo-09/). The **ClusterIP** issues an IP address that cannot be accessed from outside the cluster. On the other hand, **NodePort** and **Service** of **LoadBalancer** can be accessed from outside the cluster. The difference between **NodePort** and **LoadBalancer** is that **NodePort** is used to access each node individually, and **LoadBalancer** is used when the load balancer distributes the access to each node.
 
 In this system, Nginx is used as a reverse proxy to handle requests from the outside, and the App container and DB container do not need to be exposed to the outside.
 
--   Web container (`Nginx`) -> `NodePort`.
--   App container, DB container-> `ClusterIP and`app/service.yaml.
+- Web container (**Nginx**) -> **NodePort**.
+- App container, DB container-> **ClusterIP** and`app/service.yaml.
 
 ###### app/service.yaml
 
@@ -456,18 +454,18 @@ In this system, Nginx is used as a reverse proxy to handle requests from the out
 apiVersion: v1
 kind: Service
 metadata:
-    name: app-server
-    labels:
-        app: app-server
+  name: app-server
+  labels:
+    app: app-server
 spec:
-    type: ClusterIP
-    ports:
-        - name: http-port
-          protocol: TCP
-          port: 5000
-          targetPort: 5000
-    selector:
-        app: app-server
+  type: ClusterIP
+  ports:
+    - name: http-port
+      protocol: TCP
+      port: 5000
+      targetPort: 5000
+  selector:
+    app: app-server
 ```
 
 ###### web/service.yaml
@@ -476,19 +474,19 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-    name: linebot-nginx
-    labels:
-        app: linebot-nginx
+  name: linebot-nginx
+  labels:
+    app: linebot-nginx
 spec:
-    type: NodePort
-    ports:
-        - name: http-port
-          protocol: TCP
-          port: 80
-          targetPort: 80
-          nodePort: 30082
-    selector:
-        app: linebot-nginx
+  type: NodePort
+  ports:
+    - name: http-port
+      protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 30082
+  selector:
+    app: linebot-nginx
 ```
 
 ###### db/service.yaml
@@ -497,19 +495,19 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-    name: mysql-db
+  name: mysql-db
 spec:
-    type: ClusterIP
-    ports:
-        - name: mysql
-          port: 3306
-          targetPort: 3306
-          protocol: TCP
-    selector:
-        app: mysql-db
+  type: ClusterIP
+  ports:
+    - name: mysql
+      port: 3306
+      targetPort: 3306
+      protocol: TCP
+  selector:
+    app: mysql-db
 ```
 
-Port in `web/service.yaml` means the following
+Port in **web/service.yaml** means the following
 
 ```shell
 port: 80 -> Port number of the application in the container receiving external access
@@ -517,8 +515,8 @@ targetPort: 80 -> Port number of the destination
 nodePort: 30082 -> Port number of the externally accessed Node to which the Pod is assigned.
 ```
 
-And later, after deploying each object and launching the `Pod`, you can use the
-You can go into the `linebot-nginx` `Pod` and see that it can resolve the `metadata` name of the `app-server`.
+And later, after deploying each object and launching the **Pod**, you can use the
+You can go into the **linebot-nginx** **Pod** and see that it can resolve the **metadata** name of the **app-server** .
 
 ```shell
 $ kubectl get pod
@@ -531,13 +529,13 @@ root@linebot-nginx-yyyyyyyyyyyyy:/# curl "http://app-server:5000"
 hello world!
 ```
 
-Similar concepts of giving names to objects are `Label` and `Selector`, but they seem to be used for grouping resources and using them as a group. They do not seem to be used for network name resolution. [Reference](https://thinkit.co.jp/article/17535)
+Similar concepts of giving names to objects are **Label** and **Selector**, but they seem to be used for grouping resources and using them as a group. They do not seem to be used for network name resolution. [Reference](https://thinkit.co.jp/article/17535)
 
 ### [Ingress](https://kubernetes.io/ja/docs/concepts/services-networking/ingress/)
 
 > An API object that manages external access (primarily HTTP) to services in a cluster; Ingress provides load balancing, SSL termination, and name-based virtual hosting capabilities.
 
-The `Ingress` is responsible for forwarding external accesses to the internal `Service`. The system creates a `ManagedCertificate` object that uses GKE's Google Managed SSL Certificate and references the functionality of using SSL certificates in `Ingress` to provide SSL encryption for the `mydomain.com` server.
+The **Ingress** is responsible for forwarding external accesses to the internal **Service**. The system creates a **ManagedCertificate** object that uses GKE's Google Managed SSL Certificate and references the functionality of using SSL certificates in **Ingress** to provide SSL encryption for the **mydomain.com** server.
 
 ###### ingress/managed-cert-ingress.yaml
 
@@ -545,17 +543,17 @@ The `Ingress` is responsible for forwarding external accesses to the internal `S
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-    name: managed-cert-ingress
-    annotations:
-        kubernetes.io/ingress.global-static-ip-name: linebot-ingress　　# Name of static address created
-        networking.gke.io/managed-certificates: managed-cert
-        kubernetes.io/ingress.class: 'gce'
+  name: managed-cert-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: linebot-ingress　　# Name of static address created
+    networking.gke.io/managed-certificates: managed-cert
+    kubernetes.io/ingress.class: "gce"
 spec:
-    defaultBackend:
-        service:
-            name: linebot-nginx　　　　　　　# Service name of the backend. Here, linebot-nginx is specified for the web application.
-            port:
-                number: 80
+  defaultBackend:
+    service:
+      name: linebot-nginx　　　　　　　# Service name of the backend. Here, linebot-nginx is specified for the web application.
+      port:
+        number: 80
 ```
 
 ###### managed-cert.yaml
@@ -564,28 +562,28 @@ spec:
 apiVersion: networking.gke.io/v1
 kind: ManagedCertificate
 metadata:
-    name: managed-cert
+  name: managed-cert
 spec:
-    domains:
-        - mydomain.com # Acquired domain name
+  domains:
+    - mydomain.com # Acquired domain name
 ```
 
 ### [Pod](https://kubernetes.io/ja/docs/concepts/workloads/pods/pod-overview/)
 
-> A `Pod` is the basic unit of execution for a Kubernetes application. It is the smallest and simplest unit of the Kubernetes object model to create or deploy. A `Pod` represents a process running in a cluster.
+> A **Pod** is the basic unit of execution for a Kubernetes application. It is the smallest and simplest unit of the Kubernetes object model to create or deploy. A **Pod** represents a process running in a cluster.
 
-Each application container is created within a `Pod`.
-Actual resources are allocated on the `Node` for the amount of resources described in the `Deployment`. Basically, one container and one Pod are deployed. It is possible to deploy two or more containers in one Pod by using a sidecar container.
+Each application container is created within a **Pod**
+Actual resources are allocated on the **Node** for the amount of resources described in the **Deployment** Basically, one container and one Pod are deployed. It is possible to deploy two or more containers in one Pod by using a sidecar container.
 
-This time, the definition of `Pod` is managed by the `Deployment` object, so we did not create an object for the `Pod` itself.
+This time, the definition of **Pod** is managed by the **Deployment** object, so we did not create an object for the **Pod** itself.
 
 ### [ConfigMap](https://kubernetes.io/ja/docs/concepts/configuration/configmap/)
 
 > ConfigMap is an API object used to store non-sensitive data in key/value pairs Pods can use ConfigMap as an environment variable, command line argument, or configuration file within a volume. ConfigMap can be used to isolate environment-specific settings from the container image, making it easier to port applications.
 
-A useful object for managing application-specific parameters is the `ConfigMap`. It is not suitable for storing sensitive data as it retains text in raw text form, but it is an object that can **store options and other configuration values**.
-In our system, we used it to refer to the SQL we wanted to execute when launching the `Mysql` container.
-It is referenced in `metadata: init-db-sql` by `db/deployment.yaml`.
+A useful object for managing application-specific parameters is the **ConfigMap** It is not suitable for storing sensitive data as it retains text in raw text form, but it is an object that can **store options and other configuration values**.
+In our system, we used it to refer to the SQL we wanted to execute when launching the **Mysql** container.
+It is referenced in **metadata: init-db-sql** by **db/deployment.yaml**
 ([this article](https://qiita.com/higakin/items/b562eac58714d6681fa6) was helpful).
 
 ###### db/configmap.yaml
@@ -594,29 +592,29 @@ It is referenced in `metadata: init-db-sql` by `db/deployment.yaml`.
 apiVersion: v1
 kind: ConfigMap
 metadata:
-    name: init-db-sql
+  name: init-db-sql
 data:
-    init.sql: |
-        use linebot;
-        CREATE TABLE if not exists `testTable`(
-            `id` int(11),
-            `name` varchar(30)
-        ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
-        CREATE TABLE if not exists `itemTable`(
-            `user_id` varchar(50),
-            `item` varchar(50),
-            `todo_flg` int(11),
-            PRIMARY KEY (`user_id`, `item`)
-        ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+  init.sql: |
+    use linebot;
+    CREATE TABLE if not exists `testTable`(
+        `id` int(11),
+        `name` varchar(30)
+    ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+    CREATE TABLE if not exists `itemTable`(
+        `user_id` varchar(50),
+        `item` varchar(50),
+        `todo_flg` int(11),
+        PRIMARY KEY (`user_id`, `item`)
+    ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 ```
 
 ### [Secret](https://kubernetes.io/ja/docs/concepts/configuration/secret/)
 
 > Secret in Kubernetes allows you to store and manage sensitive information such as passwords, OAuth tokens, and SSH keys. Storing sensitive information in Secret is more secure and flexible than putting them directly in pod definitions or container images. See the Secret design document for more information; a Secret is an object that contains small amounts of sensitive data such as passwords, tokens, and keys. Otherwise, such information can be included in a Pod definition or image. The user can create a Secret, or the system can create one.
 
-It is encoded in `Base64` or similar to keep passwords and other sensitive information. It only keeps the text encoded by `Base64`, and the original text can be referred to when decrypting. Therefore, another function such as [kubesec](https://github.com/shyiko/kubesec) must be linked for encryption.
+It is encoded in **Base64** or similar to keep passwords and other sensitive information. It only keeps the text encoded by **Base64**, and the original text can be referred to when decrypting. Therefore, another function such as [kubesec](https://github.com/shyiko/kubesec) must be linked for encryption.
 The advantage is that sensitive setting values such as passwords can be handled without retaining them in raw data.
-In this system, we managed `Mysql` passwords with `Secret`.
+In this system, we managed **Mysql** passwords with **Secret**
 
 ###### db/secret.yaml
 
@@ -624,15 +622,15 @@ In this system, we managed `Mysql` passwords with `Secret`.
 apiVersion: v1
 kind: Secret
 metadata:
-    name: pass-secret
+  name: pass-secret
 type: Opaque
 data:
-    password: XXXXXXXXXXXXXXXXXXXX # Base64 encoded Mysql Password value.
+  password: XXXXXXXXXXXXXXXXXXXX # Base64 encoded Mysql Password value.
 ```
 
 [PersistentVolume,PersistentVolumeClaim](https://kubernetes.io/ja/docs/concepts/storage/persistent-volumes/)
 
-> Managing storage is completely different from managing instances. The `PersistentVolume` subsystem provides an API to abstract from users and administrators what storage is being provided from and how it is being consumed. Two new API resources, `PersistentVolume` and `PersistentVolumeClaim`, are introduced to accomplish this.
+> Managing storage is completely different from managing instances. The **PersistentVolume** subsystem provides an API to abstract from users and administrators what storage is being provided from and how it is being consumed. Two new API resources, **PersistentVolume** and **PersistentVolumeClaim**, are introduced to accomplish this.
 
 ### PersistentVolume
 
@@ -642,9 +640,9 @@ data:
 
 > PersistentVolumeClaim (PVC) is storage requested by the user. It is similar to a Pod: a Pod consumes Node resources, while a PVC consumes PV resources; a Pod can request a specific level of CPU and memory resources. Claims can be mounted to a specific size or access mode (e.g. ReadWriteOnce, ReadOnlyMany, ReadWriteMany. See Access Modes for more information).
 
-`PersistentVolume` defines a volume that is allocated on the Kubernetes cluster; when the Kubernetes cluster is deleted, the `PersistentVolume` is also deleted, but the volume itself remains when the Pod is restarted, so the `Mysql data will not be lost each time the`Pod` is restarted.
+**PersistentVolume** defines a volume that is allocated on the Kubernetes cluster; when the Kubernetes cluster is deleted, the **PersistentVolume** is also deleted, but the volume itself remains when the Pod is restarted, so the Mysql data will not be lost each time the **Pod** is restarted.
 
-Define the resources you want to request with `PersistentVolumeClaim`. It appears that it should be used in conjunction with `PersistentVolume`.
+Define the resources you want to request with **PersistentVolumeClaim** It appears that it should be used in conjunction with **PersistentVolume**
 ([this article](https://qiita.com/witchy/items/3a39b674097b86a44546) was helpful)
 
 ###### db/persistent-volume.yaml
@@ -712,8 +710,8 @@ We have created a simple container-based Flask application running on GKE.
 As a TODO management bot, it is intended for personal use only.
 I think the 3-tier application built on GKE can be deployed for other purposes than LineBot.
 
--   Create an API server and front-end application on k8s, and create a GKE-based web application.
--   Not only TODO management, but also LineBot in conjunction with other APIs, etc.
+- Create an API server and front-end application on k8s, and create a GKE-based web application.
+- Not only TODO management, but also LineBot in conjunction with other APIs, etc.
 
 Operating a system on GKE requires more Kubernetes learning and operating costs than serverless applications.
 I think there are some advantages to implementing Kubernetes in applications that are developed individually with the assumption of scale, or in systems that are operated by a medium-sized or larger team.
@@ -722,7 +720,7 @@ Next, I would like to explore the best resource management methods for Kubernete
 
 # Other References.
 
--   [Official Kubernetes Documentation](https://kubernetes.io/ja/)
--   [Kubernetes Dojo](https://cstoku.dev/tags/kubernetes/)(Each k8s object is summarized very clearly.)
+- [Official Kubernetes Documentation](https://kubernetes.io/ja/)
+- [Kubernetes Dojo](https://cstoku.dev/tags/kubernetes/)(Each k8s object is summarized very clearly.)
 
 [^1]: [Kompose](https://kubernetes.io/docs/tasks/configure-pod-container/translate-) is a tool that converts the way docker-compose and Kubernetes are written. compose-kubernetes/), but I was not able to convert the detailed settings.
