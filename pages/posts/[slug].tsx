@@ -8,29 +8,10 @@ import gfm from 'remark-gfm';
 import rehypeStringify from 'rehype-stringify';
 import remarkToc from 'remark-toc';
 import rehypeSlug from 'rehype-slug';
-import Image from 'next/image';
 
-import { createElement, Fragment } from 'react';
+import { createElement } from 'react';
 import rehypeParse from 'rehype-parse';
 import rehypeReact from 'rehype-react';
-import Link from 'next/link';
-
-function MyLink({ children, href }: { children: any, href: any }) {
-  if (href === '') href = '/';
-  return href.startsWith('/') || href.startsWith('#') ? (
-    <Link href={href}>
-      <a>{children}</a>
-    </Link>
-  ) : (
-    <a href={href} target="_blank" rel="noopener noreferrer">
-      {children}
-    </a>
-  );
-}
-
-const MyImage = ({ src, alt }: {src: string, alt: string}) => {
-  return <Image src={src} alt={alt} width="1200" height="700" />;
-};
 
 const toReactNode = (content: any) => {
   return unified()
@@ -80,12 +61,6 @@ const Post = ({ frontMatter, content, slug }: { frontMatter: any, content: any, 
   return (
     <div className="prose prose-lg py-8 mx-auto max-w-screen-md content-center text-base">
       <div className="border">
-        <Image
-          src={`/${frontMatter.image}`}
-          width={1200}
-          height={700}
-          alt={frontMatter.title}
-        />
       </div>
       <h1 className="mt-12">{frontMatter.title}</h1>
       <span>{frontMatter.date}</span>
