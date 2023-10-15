@@ -89,47 +89,6 @@ The **GCP services** used are.
 - Google VPC network
 - Google Artifact Registry
 
-# Directory Structure
-
-```shell
-$ tree
-.
-├── LICENSE
-├── README.md
-├── __pycache__
-│ └── app.cpython-38.pyc
-├── app <-------------------- Flask Application related directory
-Dockerfile
-Dockerfile │ ├── __pycache__
-│ │ ├── app.cpython-39.pyc
-│ │ └── wsgi.cpython-39.pyc
-│ ├── app.py
-│ ├── application.log
-application.log │ ├── deployment.yaml
-│ ├── development.json
-requirements.txt
-Requirements.txt │ ├── service.yaml
-service.yaml │ └── uwsgi.ini
-├── architecture_linebot.drawio.svg
-├── db <-------------------- Describe DB server settings using Mysql
-│ ├── configmap.yaml
-│ ├── deployment.yaml
-│ ├── initdb.d
-│ └── init.sql
-│ ├─ persistent-volume.yaml
-│ ├── secret.yaml
-│ └─ service.yaml
-├── docker-compose.yaml <-------------- docker-compose.yaml for local execution
-├── ingress <-------------- SSL certificate and ingress settings
-│ ├── managed-cert-ingress.yaml
-│ └── managed-cert.yaml
-└── web <-------------------- Describe web server settings using Nginx
-    Dockerfile
-    ├── default.conf
-    Dockerfile ├── deployment.yaml
-    └─ service.yaml
-```
-
 # Start up in local environment
 
 The **docker-compose** command allows you to launch App, Web, and DB containers in a local environment.

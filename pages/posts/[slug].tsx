@@ -78,7 +78,7 @@ export async function getStaticPaths() {
 
 const Post = ({ frontMatter, content, slug }: { frontMatter: any, content: any, slug: any }) => {
   return (
-    <div className="prose prose-lg py-8 mx-auto max-w-screen-md content-center">
+    <div className="prose prose-lg py-8 mx-auto max-w-screen-md content-center text-base">
       <div className="border">
         <Image
           src={`/${frontMatter.image}`}
