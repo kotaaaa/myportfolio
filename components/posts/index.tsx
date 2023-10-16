@@ -44,11 +44,11 @@ const Posts: NextPage<{ posts: any[], allTeckStacks: string[] }> = ({ posts, all
         <title>Posts - Kota Portfolio</title>
       </Head>
       <section className="bg-white dark:bg-gray-900 h-fit py-8">
-        <div className="py-8 mx-auto max-w-screen-md content-center">
-          <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-gray-300">
+        <div className="py-8 mx-auto max-w-md md:max-w-screen-md content-center">
+          <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-gray-100">
                 Posts
           </h2>
-          <div className="content-center gap-2 py-4 mx-auto max-w-screen-md content-center">
+          <div className="gap-2 py-4">
             {allTeckStacks.map((name: string, idx: number) => {
               return (
                 <button
@@ -65,7 +65,7 @@ const Posts: NextPage<{ posts: any[], allTeckStacks: string[] }> = ({ posts, all
             })}
           </div>
           <div className="my-2">
-            <div className="grid grid-cols-3 gap-10 py-4 mx-auto max-w-screen-lg content-center">
+            <div className="grid md:grid-cols-2 grid-cols-1 gap-10 py-4 mx-auto">
               {postsList.map((post) => (
                 <PostCard key={post.slug} post={post} />
               ))}
