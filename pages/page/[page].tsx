@@ -65,7 +65,7 @@ const Page = ({ posts, pages, current_page }: { posts:any[], pages:any[], curren
       </Head>
       <section className="bg-white dark:bg-gray-900 h-fit py-8">
         <div className="py-8 mx-auto max-w-screen-md content-center">
-          <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-gray-300">
+          <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-gray-400">
                 Posts
           </h2>
           <div className="my-8">

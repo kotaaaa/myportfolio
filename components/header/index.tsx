@@ -77,7 +77,7 @@ const Header = () => {
     return () => {
       document.removeEventListener("mousedown", navBarHandler);
     };
-  }, []);
+  }, [navBarHandler]);
 
   return (
     <>
@@ -133,7 +133,7 @@ const Header = () => {
               {sections.category.map((sec, idx) => {
                 return (
                   <Link href={sec.link} key={`${idx}-${sec.title}`}>
-                    <li className="block py-2 pr-4 pl-3 rounded cursor-pointer hover:text-blue-700 dark:hover:text-blue-700 md:p-0 text-gray-900 dark:text-gray-300">
+                    <li className="block py-2 pr-4 pl-3 rounded cursor-pointer hover:text-blue-700 dark:hover:text-blue-700 md:p-0 text-gray-900 dark:text-gray-400">
                       {sec.title}
                     </li>
                   </Link>

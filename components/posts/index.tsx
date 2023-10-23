@@ -45,7 +45,7 @@ const Posts: NextPage<{ posts: any[], allTeckStacks: string[] }> = ({ posts, all
       </Head>
       <section className="bg-white dark:bg-gray-900 h-fit py-8">
         <div className="py-8 mx-auto max-w-md md:max-w-screen-md content-center">
-          <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-gray-100">
+          <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-gray-400">
                 Posts
           </h2>
           <div className="gap-2 py-4">
@@ -53,7 +53,7 @@ const Posts: NextPage<{ posts: any[], allTeckStacks: string[] }> = ({ posts, all
               return (
                 <button
                   key={`techStack-${name}-${idx}`}
-                  className={`text-xs inline-block py-1 px-2 my-1 mx-1.5 rounded-full text-blue-600 bg-blue-50 last:mr-0 mr-1 ${highLightTab(
+                  className={`text-xs inline-block py-1 px-2 my-1 mx-1.5 rounded-full text-blue-600 bg-blue-50 last:mr-0 mr-1 dark:bg-gray-300 dark:text-gray-700 ${highLightTab(
                         name
                   )}`} 
                   id={name}
