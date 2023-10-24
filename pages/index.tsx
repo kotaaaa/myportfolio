@@ -48,10 +48,6 @@ const Home: NextPage<{sortedPosts: any[], allTeckStacks: string[]}> = ({ sortedP
       <section id="aboutme">
         <Aboutme />
       </section>
-
-      <section id="posts">
-        <Posts posts={sortedPosts} allTeckStacks={allTeckStacks}/>
-      </section>
     </>
   );
 };
