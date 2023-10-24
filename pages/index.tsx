@@ -4,7 +4,6 @@ import fs from 'fs';
 import matter from 'gray-matter';
 
 import Aboutme from "../components/aboutme";
-import Posts from "../components/posts";
 
 export const getStaticProps = () => {
   const files = fs.readdirSync('posts');

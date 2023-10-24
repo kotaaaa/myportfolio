@@ -23,7 +23,7 @@ const Aboutme: NextPage = () => {
       </Head>
 
       <section className="bg-white dark:bg-gray-900 py-8">
-        <div className="md:basis-3/12 mt-12 flex content-center justify-center">
+        <div className="md:basis-3/12 mt-14 flex content-center justify-center">
           <Image
             className="rounded-full"
             src={profileImg}
