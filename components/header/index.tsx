@@ -56,7 +56,7 @@ const Header = () => {
           <div
             className=""
           >
-            <ul className="flex p-4 bg-gray-50 rounded-lg border border-gray-100 flex-row space-x-8 mt-0 text-sm font-medium border-0 bg-white dark:bg-gray-800 dark:bg-gray-900 dark:border-gray-700">
+            <ul className="flex bg-gray-50 rounded-lg border border-gray-100 flex-row space-x-8 mt-0 text-sm font-medium border-0 bg-white dark:bg-gray-800 dark:bg-gray-900 dark:border-gray-700">
               {sections.category.map((sec, idx) => {
                 return (
                   <Link href={sec.link} key={`${idx}-${sec.title}`}>
