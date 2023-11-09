@@ -109,7 +109,7 @@ const middleware: Icon[] = [
   { src: "/icons/linux.svg", label: "Linux" }
 ];
 
-const IconList: React.FC<IconListProps> = ({ icons }) => {
+const IconList = ({ icons }: IconListProps) => {  
   return (
     <>
       {icons.map((icon, index) => (
