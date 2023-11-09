@@ -32,23 +32,6 @@ const Header = () => {
     setDarkMode(theme.light);
   };
 
-  // const initDarkMode = () => {
-  //   const storedMode = localStorage.getItem(theme.theme);
-  //   if (!storedMode || storedMode !== theme.dark) return;
-  //   const rootElement = document.documentElement;
-  //   rootElement.classList.add(theme.dark);
-  //   setDarkMode(theme.dark);
-  // };
-
-  // useEffect(() => {
-  //   document.addEventListener("mousedown", navBarHandler);
-  //   initDarkMode();
-
-  //   return () => {
-  //     document.removeEventListener("mousedown", navBarHandler);
-  //   };
-  // }, [navBarHandler]);
-
   return (
     <>
       <nav className="bg-white px-2 sm:px-4 py-2 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 flex border-b-4 border-gray-900 dark:border-gray-500">

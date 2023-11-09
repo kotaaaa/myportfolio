@@ -3,7 +3,7 @@ import { FC } from "react";
 import Header from "../header";
 import { layoutProps } from "../../interface/props";
 
-const Layout: FC<layoutProps> = ({ children }) => {
+const Layout = ({ children }: layoutProps) => {
   return (
     <>
       <Header />
