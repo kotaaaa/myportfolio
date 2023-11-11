@@ -167,7 +167,7 @@ const CertificationSection = () => {
       <h1 className="py-2 mt-12 mb-2 text-4xl tracking-tight font-black text-center text-gray-900">
         Certification
       </h1 >   
-      <div className="flex content-center justify-center">
+      <div className="flex content-center justify-center pb-8">
         <div className="tooltip mr-3" onMouseEnter={() => setHoverMessage('Python')} onMouseLeave={() => setHoverMessage('')}>
           <Link href="https://www.credly.com/badges/e1f8c8a8-2e0b-4716-a034-5a233a9c6b48/linked_in_profile">
             <a><Image src="/icons/aws-cert.png" width={50} height={50} alt="aws" /></a>

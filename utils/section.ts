@@ -6,6 +6,10 @@ const category: ISection[] = [
     title: "About",
   },
   {
+    link: "/projects",
+    title: "Projects",
+  },
+  {
     link: "/posts",
     title: "Posts",
   },

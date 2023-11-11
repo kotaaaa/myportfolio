@@ -1,4 +1,5 @@
 import Header from "../header";
+import Footer from "../footer";
 import { layoutProps } from "../../interface/props";
 
 const Layout = ({ children }: layoutProps) => {
@@ -6,6 +7,7 @@ const Layout = ({ children }: layoutProps) => {
     <div className="mx-auto w-full max-w-[80%]">
       <Header />
       <main>{children}</main>
+      <Footer/>
     </div>
   );
 };
