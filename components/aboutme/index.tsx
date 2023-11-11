@@ -14,58 +14,60 @@ const ProfileSection = () => {
   const gitHubUrl = "https://github.com/kotaaaa";
   const researchUrl = "https://kotaaaa.github.io/rhp/";
   return (
-    <div className="profile-section">
-      <div className="md:basis-3/12 mt-12 flex content-center justify-center">
+    <div className="profile-section grid grid-cols-1 md:grid-cols-2 h-screen justify-center items-center">
+      <div className="flex justify-center items-center hidden md:flex">
         <Image
           className="rounded-full"
           src={profileImg}
           alt="me"
-          width={200}
-          height={200}
+          width={350}
+          height={350}
           priority
         />
       </div>
-      <div className="dark:text-gray-400">
-        <div className="py-4">
-          <p className="text-center text-4xl py-1">Hey, It's Kota 👋</p>
-          <p className="text-center text-xl py-1">Full Stack Developer</p>
+      <div className="">
+        <div className="dark:text-gray-400">
+          <div className="py-4">
+            <p className="text-center text-5xl py-1 font-bold">Hey, It's Kota 👋</p>
+            <p className="text-center text-xl py-1">Full Stack Developer</p>
+          </div>
+          <div className="py-1 flex content-center justify-center">
+            <Link href={linkedinUrl}>
+              <button>
+                <FontAwesomeIcon
+                  icon={faLinkedin}
+                  size="2xl"
+                  className="px-4 hover:text-blue-700"
+                />
+              </button>
+            </Link>
+            <Link href={gitHubUrl}>
+              <button>
+                <FontAwesomeIcon
+                  icon={faGithubSquare}
+                  size="2xl"
+                  className="px-4 hover:text-blue-700"
+                />
+              </button>
+            </Link>
+            <Link href={researchUrl}>
+              <button>
+                <FontAwesomeIcon
+                  icon={faGraduationCap}
+                  size="2xl"
+                  className="px-4 hover:text-blue-700"
+                />
+              </button>
+            </Link>
+          </div>
         </div>
-        <div className="py-1 flex content-center justify-center">
-          <Link href={linkedinUrl}>
-            <button>
-              <FontAwesomeIcon
-                icon={faLinkedin}
-                size="2xl"
-                className="px-4 hover:text-blue-700"
-              />
-            </button>
-          </Link>
-          <Link href={gitHubUrl}>
-            <button>
-              <FontAwesomeIcon
-                icon={faGithubSquare}
-                size="2xl"
-                className="px-4 hover:text-blue-700"
-              />
-            </button>
-          </Link>
-          <Link href={researchUrl}>
-            <button>
-              <FontAwesomeIcon
-                icon={faGraduationCap}
-                size="2xl"
-                className="px-4 hover:text-blue-700"
-              />
-            </button>
-          </Link>
+        <div className="mx-auto max-w-screen-md justify-center content-center">
+          <p className="py-4 lg:mb-10 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
+            Hi! I am Kota Kawaguchi who is Software Developer <br /> with 4+ years experience living in <strong>Vancouver</strong>. 
+            <br/>
+            My expertise field is <strong>Backend</strong> / <strong>DevOps</strong> / <strong>Cloud</strong> / <strong>Full Stack</strong>.
+          </p>
         </div>
-      </div>
-      <div className="mx-auto max-w-screen-md justify-center content-center">
-        <p className="py-4 lg:mb-10 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
-          Hi! I am Kota Kawaguchi who is Software Developer <br /> with 4+ years experience living in <strong>Vancouver</strong>. 
-          <br/>
-          My expertise field is <strong>Backend</strong> / <strong>DevOps</strong> / <strong>Cloud</strong> / <strong>Full Stack</strong>.
-        </p>
       </div>
     </div>
   );
@@ -126,28 +128,28 @@ const IconList = ({ icons }: IconListProps) => {
 const SkillSection = () => {
   return (
     <div className="skill-section">
-      <h1 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-gray-400">
+      <h1 className="mb-4 text-4xl tracking-tight font-black text-center text-gray-900 dark:text-gray-400">
         Techs
       </h1 >
-      <p className="py-2 mb-2 text-2xl tracking-tight text-center text-gray-900 dark:text-gray-400">
+      <p className="py-2 mb-2 text-xl tracking-tight text-center text-gray-900 dark:text-gray-400">
         Programming Language
       </p>
       <div className="flex content-center justify-center">
         <IconList icons={programmingLanguage} />
       </div>
-      <p className="py-2 mb-2 text-2xl tracking-tight text-center text-gray-900 dark:text-gray-400">
+      <p className="py-2 mb-2 text-xl tracking-tight text-center text-gray-900 dark:text-gray-400">
         Framework
       </p >   
       <div className="flex content-center justify-center">
         <IconList icons={frameworks} />
       </div>
-      <p className="py-2 mb-2 text-2xl tracking-tight text-center text-gray-900 dark:text-gray-400">
+      <p className="py-2 mb-2 text-xl tracking-tight text-center text-gray-900 dark:text-gray-400">
         Cloud
       </p >
       <div className="flex content-center justify-center">
         <IconList icons={cloud} />
       </div>
-      <p className="py-2 mb-2 text-2xl tracking-tight text-center text-gray-900 dark:text-gray-400">
+      <p className="py-2 mb-2 text-xl tracking-tight text-center text-gray-900 dark:text-gray-400">
         Middleware / Others
       </p >   
       <div className="flex content-center justify-center">
@@ -162,7 +164,7 @@ const CertificationSection = () => {
   const [hoverMessage, setHoverMessage] = useState('');
   return (
     <div className="certification-section">
-      <h1 className="py-2 mt-12 mb-2 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-gray-400">
+      <h1 className="py-2 mt-12 mb-2 text-4xl tracking-tight font-black text-center text-gray-900 dark:text-gray-400">
         Certification
       </h1 >   
       <div className="flex content-center justify-center">
@@ -188,7 +190,7 @@ const Aboutme: NextPage = () => {
         <title>About me - Kota Portfolio</title>
       </Head>
 
-      <main className="main-content py-8">
+      <main className="main-content">
         <ProfileSection />
         <SkillSection />
         <CertificationSection />

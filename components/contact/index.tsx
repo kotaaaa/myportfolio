@@ -12,7 +12,7 @@ const Contact: NextPage = () => {
 
       <section className="bg-white dark:bg-gray-900 h-fit py-8">
         <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md content-center">
-          <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900 dark:text-gray-400">
+          <h2 className="mb-4 text-4xl tracking-tight font-black text-center text-gray-900 dark:text-gray-400">
             Contact
           </h2>
           <p className="lg:mb-10 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">

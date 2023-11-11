@@ -4,9 +4,9 @@
 @tailwind utilities;
 body {
     background-color: white;
+    font-family: 'Poppins', sans-serif;
 }
 
 .dark body {
-    background-color: #1F2937;
-    /* bg-gray-900のカラーコード */
+    background-color: #111827;
 }

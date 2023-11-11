@@ -41,7 +41,7 @@ export const getStaticProps = () => {
 const Home: NextPage<{sortedPosts: any[], allTeckStacks: string[]}> = ({ sortedPosts, allTeckStacks }) => {
   return (
     <>
-      <section id="posts">
+      <section id="posts" className="py-20">
         <Posts posts={sortedPosts} allTeckStacks={allTeckStacks}/>
       </section>
     </>
