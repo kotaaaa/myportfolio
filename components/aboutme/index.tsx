@@ -9,7 +9,7 @@ import { NextPage } from 'next';
 
 // ProfileSection Component
 const ProfileSection = () => {
-  const profileImg = "/profile.jpg";
+  const profileImg = "/profile.png";
   const linkedinUrl = "https://www.linkedin.com/in/kota1110/";
   const gitHubUrl = "https://github.com/kotaaaa";
   const researchUrl = "https://kotaaaa.github.io/rhp/";
