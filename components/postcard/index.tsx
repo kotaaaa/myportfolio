@@ -4,7 +4,7 @@ import Link from 'next/link';
 const PostCard = ({ post }:{ post: any}) => {
   return (
     <Link href={`/posts/${post.slug}`}>
-      <div className="border border-gray-200 shadow-md h-fit dark:bg-gray-600 dark:border-gray-600 rounded-lg p-3 h-1/2 cursor-pointer dark:text-gray-200">
+      <div className="border border-gray-200 shadow-md h-fit rounded-lg p-3 h-1/2 cursor-pointer">
         <a>
           <div className="border rounded-lg">
             <Image
@@ -20,14 +20,14 @@ const PostCard = ({ post }:{ post: any}) => {
           </div>
           {post.frontMatter.techStack && (
               <>
-                <p className="mb-4 font-bold tracking-tight text-gray-900 dark:text-gray-200">
+                <p className="mb-4 font-bold tracking-tight text-gray-900">
                   Tech Stack
                 </p>
                 {post.frontMatter.techStack.map((name: String, idx: number) => {
                   return (
                     <span
                       key={`techStack-${name}-${idx}`}
-                      className="text-xs font-medium inline-block py-1 px-1.5 mx-1 rounded-full text-blue-600 bg-blue-100 last:mr-0 mr-1 dark:bg-gray-300 dark:text-gray-700"
+                      className="text-xs font-medium inline-block py-1 px-1.5 mx-1 rounded-full text-blue-600 bg-blue-100 last:mr-0 mr-1"
                     >
                       {name}
                     </span>

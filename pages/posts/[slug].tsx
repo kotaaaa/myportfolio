@@ -59,8 +59,8 @@ export async function getStaticPaths() {
 
 const Post = ({ frontMatter, content, slug }: { frontMatter: any, content: any, slug: any }) => {
   return (
-    <div className="prose prose-lg py-20 mx-auto max-w-screen-md content-center text-base dark:text-gray-400">
-      <h1 className="mt-12 dark:text-gray-400">{frontMatter.title}</h1>
+    <div className="prose prose-lg py-20 mx-auto max-w-screen-md content-center text-base">
+      <h1 className="mt-12">{frontMatter.title}</h1>
       <span>{frontMatter.date}</span>
       {toReactNode(content)}
     </div>

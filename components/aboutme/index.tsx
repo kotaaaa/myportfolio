@@ -26,7 +26,7 @@ const ProfileSection = () => {
         />
       </div>
       <div className="">
-        <div className="dark:text-gray-400">
+        <div className="">
           <div className="py-4">
             <p className="text-center text-5xl py-1 font-bold">Hey, It's Kota 👋</p>
             <p className="text-center text-xl py-1">Full Stack Developer</p>
@@ -62,7 +62,7 @@ const ProfileSection = () => {
           </div>
         </div>
         <div className="mx-auto max-w-screen-md justify-center content-center">
-          <p className="py-4 lg:mb-10 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
+          <p className="py-4 lg:mb-10 font-light text-center text-gray-500 sm:text-xl">
             Hi! I am Kota Kawaguchi who is Software Developer <br /> with 4+ years experience living in <strong>Vancouver</strong>. 
             <br/>
             My expertise field is <strong>Backend</strong> / <strong>DevOps</strong> / <strong>Cloud</strong> / <strong>Full Stack</strong>.
@@ -128,28 +128,28 @@ const IconList = ({ icons }: IconListProps) => {
 const SkillSection = () => {
   return (
     <div className="skill-section">
-      <h1 className="mb-4 text-4xl tracking-tight font-black text-center text-gray-900 dark:text-gray-400">
+      <h1 className="mb-4 text-4xl tracking-tight font-black text-center text-gray-900">
         Techs
       </h1 >
-      <p className="py-2 mb-2 text-xl tracking-tight text-center text-gray-900 dark:text-gray-400">
+      <p className="py-2 mb-2 text-xl tracking-tight text-center text-gray-900">
         Programming Language
       </p>
       <div className="flex content-center justify-center">
         <IconList icons={programmingLanguage} />
       </div>
-      <p className="py-2 mb-2 text-xl tracking-tight text-center text-gray-900 dark:text-gray-400">
+      <p className="py-2 mb-2 text-xl tracking-tight text-center text-gray-900">
         Framework
       </p >   
       <div className="flex content-center justify-center">
         <IconList icons={frameworks} />
       </div>
-      <p className="py-2 mb-2 text-xl tracking-tight text-center text-gray-900 dark:text-gray-400">
+      <p className="py-2 mb-2 text-xl tracking-tight text-center text-gray-900">
         Cloud
       </p >
       <div className="flex content-center justify-center">
         <IconList icons={cloud} />
       </div>
-      <p className="py-2 mb-2 text-xl tracking-tight text-center text-gray-900 dark:text-gray-400">
+      <p className="py-2 mb-2 text-xl tracking-tight text-center text-gray-900">
         Middleware / Others
       </p >   
       <div className="flex content-center justify-center">
@@ -164,7 +164,7 @@ const CertificationSection = () => {
   const [hoverMessage, setHoverMessage] = useState('');
   return (
     <div className="certification-section">
-      <h1 className="py-2 mt-12 mb-2 text-4xl tracking-tight font-black text-center text-gray-900 dark:text-gray-400">
+      <h1 className="py-2 mt-12 mb-2 text-4xl tracking-tight font-black text-center text-gray-900">
         Certification
       </h1 >   
       <div className="flex content-center justify-center">
