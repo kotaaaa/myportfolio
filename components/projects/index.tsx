@@ -8,46 +8,6 @@ interface IProjectsContents {
     techStack: string[]
 }
 
-interface IProjectsListProps {
-    projectsContents: IProjectsContents[];
-}
-
-const ProjectsList = ({ projectsContents }: IProjectsListProps) => {
-    return (
-        <div className="py-6">
-            {projectsContents.map((content: IProjectsContents) => {
-                return (
-                    <>
-                        <h3 className="py-2 text-3xl underline">
-                            {content.title}
-                        </h3>
-                        <p className="py-2">
-                            {content.contents}
-                        </p>
-                        <p className="py-2">{content.techStack.map((name: String, idx: number) => {
-                            return (
-                                <span
-                                    key={`techStack-${name}-${idx}`}
-                                    className="text-base font-medium inline-block py-1 px-1.5 mx-1 rounded-3xl text-blue-600 bg-blue-100 last:mr-0 mr-1"
-                                >
-                                    {name}
-                                </span>
-                            );
-                        })}
-                        </p>
-                        <Link href={content.link}>
-                            <p className="py-2 hover:underline hover:cursor-pointer">
-                                more..
-                            </p>
-                        </Link>
-                    </>
-                )
-             })}
-
-        </div>
-    );
-}
-
 const projectsContents: IProjectsContents[] = [
     {
         title: "Messaging Bot Integration with Kubernetes(GKE)",
@@ -63,6 +23,45 @@ const projectsContents: IProjectsContents[] = [
     }
 ]
 
+const ProjectItem = ({ content }: {
+    content: IProjectsContents;
+}) => {
+    return (
+        <>
+            <h3 className="py-2 text-3xl underline">
+                {content.title}
+            </h3>
+            <p className="py-2">
+                {content.contents}
+            </p>
+            <p className="py-2">
+                {content.techStack.map((name, idx) => (
+                    <span
+                        key={`techStack-${name}`}
+                        className="text-base font-medium inline-block py-1 px-1.5 mx-1 rounded-3xl text-blue-600 bg-blue-100 last:mr-0 mr-1"
+                    >
+                        {name}
+                    </span>
+                ))}
+            </p>
+            <Link href={content.link}>
+                <a className="py-2 hover:underline hover:cursor-pointer">
+                    more..
+                </a>
+            </Link>
+        </>
+    );
+};
+
+const ProjectsList = ({ projectsContents }: { projectsContents: IProjectsContents[] }) => {
+    return (
+        <div className="py-6">
+            {projectsContents.map((content: IProjectsContents, index: number) => (
+                <ProjectItem key={`project-${index}`} content={content} />
+            ))}
+        </div>
+    );
+}
 
 const Projects = () => {
     return (
