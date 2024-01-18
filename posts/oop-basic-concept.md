@@ -1,5 +1,5 @@
 ---
-title: Object Oriented Programming foundational concept; Abstraction, Inheritance, Polymorphism, Encapsulation
+title: Object Oriented Programming foundational concept
 date: "2023-05-17"
 techStack: ["Java", "OOP", "System Design"]
 category: Java

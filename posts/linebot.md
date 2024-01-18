@@ -1,5 +1,5 @@
 ---
-title: TODO management Linebot with GKE & Flask
+title: Messaging Bot Integration with Kubernetes(GKE) & Flask
 date: "2022-04-21"
 techStack: ["Kubernetes", "Flask", "Python"]
 category: Kubernetes

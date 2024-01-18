@@ -1,9 +1,9 @@
 ---
 title: Template Method pattern introduction with Java
-date: '2021-05-01'
+date: "2021-05-01"
 techStack: ["Java", "System Design", "Design Pattern"]
 category: Java
-background: '#4169e1'
+background: "#4169e1"
 image: img/template-java/template.png
 ---
 
@@ -117,11 +117,11 @@ public class StringDisplay extends AbstractDisplay {
 
 ##### Pros
 
--   Logic can be shared.
--   We do not have to write same code.
--   Easy to test / Less code to fix.
+- Logic can be shared.
+- We do not have to write same code.
+- Easy to test / Less code to fix.
 
 ##### Cons
 
--   Difficult to decide how much should be standardized and left to individual implementation
--   If you don't design to cover all the patterns that could be used, you will end up with a template that is difficult to apply.
+- Difficult to decide how much should be standardized and left to individual implementation
+- If you don't design to cover all the patterns that could be used, you will end up with a template that is difficult to apply.

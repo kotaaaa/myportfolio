@@ -1,20 +1,20 @@
 ---
 title: Vue.js vs Angular
-date: '2020-08-31'
+date: "2020-08-31"
 techStack: ["Vue", "Angular"]
 category: Frontend
-background: '#9400d3'
+background: "#9400d3"
 image: img/vue-vs-angular/vue_state.png
 ---
 
 # Table of Contents
 
--   Share & trend of both flamework
--   Comparison
-    -   basic function
-    -   Data store
-    -   Routing
--   Summary
+- Share & trend of both flamework
+- Comparison
+  - basic function
+  - Data store
+  - Routing
+- Summary
 
 # Comparison
 
@@ -40,103 +40,99 @@ image: img/vue-vs-angular/vue_state.png
 
 ```html
 <template>
-    <div id="product-list-two">
-        <h2>Movie List</h2>
-        <h2>{{ $store.state.movie_list }}</h2>
-        <ul>
-            <li v-for="movie in $store.state.movie_list" :key="movie.id">
-                <span class="name">{{ movie.original_title }}</span>
-                <tr>
-                    <td>
-                        <img
-                            :src="
+  <div id="product-list-two">
+    <h2>Movie List</h2>
+    <h2>{{ $store.state.movie_list }}</h2>
+    <ul>
+      <li v-for="movie in $store.state.movie_list" :key="movie.id">
+        <span class="name">{{ movie.original_title }}</span>
+        <tr>
+          <td>
+            <img
+              :src="
                 'https://image.tmdb.org/t/p/w300_and_h450_bestv2' +
                 movie.poster_path
               "
-                            align="top"
-                        />
-                    </td>
-                    <td>
-                        <span class="content_title"> Genre: </span>
-                        <span v-for="cat in movie.genre_ids" :key="cat.id">
-                            <span class="each_genre">
-                                {{ getGenreById(cat)[0].name }},
-                            </span>
-                        </span>
-                        <br />
-                        <span class="content_title">Overview:</span>
-                        <span class="overview">
-                            {{ movie.overview }}
-                        </span>
-                    </td>
-                </tr>
-            </li>
-        </ul>
-    </div>
+              align="top"
+            />
+          </td>
+          <td>
+            <span class="content_title"> Genre: </span>
+            <span v-for="cat in movie.genre_ids" :key="cat.id">
+              <span class="each_genre"> {{ getGenreById(cat)[0].name }}, </span>
+            </span>
+            <br />
+            <span class="content_title">Overview:</span>
+            <span class="overview"> {{ movie.overview }} </span>
+          </td>
+        </tr>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
-    import axios from 'axios'
-    import { mapState, mapGetters } from 'vuex'
-    export default {
-        created() {
-            this.$store.dispatch('set_movie_list')
-        },
-        computed: {
-            saleMovies() {
-                return this.$store.getters.saleMovies
-            },
-            getGenreById() {
-                return this.$store.getters.getGenreById
-            },
-        },
-    }
+  import axios from "axios";
+  import { mapState, mapGetters } from "vuex";
+  export default {
+    created() {
+      this.$store.dispatch("set_movie_list");
+    },
+    computed: {
+      saleMovies() {
+        return this.$store.getters.saleMovies;
+      },
+      getGenreById() {
+        return this.$store.getters.getGenreById;
+      },
+    },
+  };
 </script>
 ```
 
 ###### store.js
 
 ```javascript
-import Vue from 'vue'
-import Vuex from 'vuex'
-import movieApi from '../api/movie'
-import babelPolyfill from 'babel-polyfill'
+import Vue from "vue";
+import Vuex from "vuex";
+import movieApi from "../api/movie";
+import babelPolyfill from "babel-polyfill";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export const store = new Vuex.Store({
-    strict: true,
-    state: {
-        movie_list: [],
-        genres: [{ id: 1, name: 'Action' }],
+  strict: true,
+  state: {
+    movie_list: [],
+    genres: [{ id: 1, name: "Action" }],
+  },
+  getters: {
+    getGenreById: (state) => (id) => {
+      return state.genres.filter((genre) => genre.id === id);
     },
-    getters: {
-        getGenreById: state => id => {
-            return state.genres.filter(genre => genre.id === id)
-        },
+  },
+  mutations: {
+    setMovie(state, list) {
+      state.movie_list = list;
     },
-    mutations: {
-        setMovie(state, list) {
-            state.movie_list = list
-        },
+  },
+  actions: {
+    async set_movie_list(context) {
+      let list = await movieApi.fetchLists();
+      context.commit("setMovie", list.results);
     },
-    actions: {
-        async set_movie_list(context) {
-            let list = await movieApi.fetchLists()
-            context.commit('setMovie', list.results)
-        },
-    },
-})
+  },
+});
 ```
 
 # Summary
 
--   Difference between Vue.js and Angular
+- Difference between Vue.js and Angular
 
-    -   Data flow
-    -   Strictness of writing code
-    -   External libraries(data store, routing)
+  - Data flow
+  - Strictness of writing code
+  - External libraries(data store, routing)
 
--   What we have to care when we decide one of them…
-    -   the ecosystem (including whether there are many developers who use it or not) may be the key to success. (easier to resolve errors)
-    -   Popularness in order to hire good engineers.
+- What we have to care when we decide one of them…
+  - the ecosystem (including whether there are many developers who use it or not) may be the key to success. (easier to resolve errors)
+  - Popularness in order to hire good engineers.

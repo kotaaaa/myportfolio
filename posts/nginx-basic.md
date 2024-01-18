@@ -1,9 +1,9 @@
 ---
 title: Nginx Basic overview
-date: '2022-01-22'
+date: "2022-01-22"
 techStack: ["Nginx", "Reverse proxy"]
 category: Middleware
-background: '#008000'
+background: "#008000"
 image: img/nginx-basic/reverse-proxy.png
 ---
 
@@ -28,10 +28,10 @@ Nginx [engine x] is an HTTP and reverse proxy server, a mail proxy server, and g
 
 # What for Nginx(reverse proxy) is used?
 
--   Load Balancing (switching upstream host)
--   For security reason (ACL IP address blocking)
--   Speeding up through caching (return js, css, html files, show busy pages)
--   Integration of different apps, frameworks, and platforms (we can switch many kinds of apps by nginx conf)
+- Load Balancing (switching upstream host)
+- For security reason (ACL IP address blocking)
+- Speeding up through caching (return js, css, html files, show busy pages)
+- Integration of different apps, frameworks, and platforms (we can switch many kinds of apps by nginx conf)
 
 # Nginx Directive
 

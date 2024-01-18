@@ -1,9 +1,9 @@
 ---
 title: Kmeans method scrach implementation
-date: '2019-04-25'
+date: "2019-04-25"
 techStack: ["Python", "Algorizm"]
 category: Python
-background: '#4169e1'
+background: "#4169e1"
 image: img/python/python-symbol.png
 ---
 
@@ -18,14 +18,14 @@ Any advice on coding would be greatly appreciated.
 
 ## Local environment
 
--   MACOS-High Sierra
--   Python 2.7.13
+- MACOS-High Sierra
+- Python 2.7.13
 
 ## Python modules used
 
--   matplotlib (2.1.2)
--   numpy (1.14.0)
--   multipledispatch (0.4.9)
+- matplotlib (2.1.2)
+- numpy (1.14.0)
+- multipledispatch (0.4.9)
 
 ## Code actually used
 

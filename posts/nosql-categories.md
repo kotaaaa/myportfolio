@@ -1,9 +1,9 @@
 ---
 title: Type of NoSQL Categories Summarization
-date: '2022-10-15'
+date: "2022-10-15"
 techStack: ["SQL", "NoSQL"]
 category: Data-Engineering
-background: '#ff00cc'
+background: "#ff00cc"
 image: img/nosql-categories/db-types.svg
 ---
 

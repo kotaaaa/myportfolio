@@ -1,9 +1,9 @@
 ---
 title: RESTful design principle explanation
-date: '2021-05-01'
+date: "2021-05-01"
 techStack: ["RESTful", "API"]
 category: Application
-background: '#4169e1'
+background: "#4169e1"
 image: img/rest/rest.png
 ---
 
@@ -17,10 +17,10 @@ REST is a concept for handling resources (content such as blog posts, photos, et
 When designing REST, it is recommended that the following items be used as design principles.
 Web services that adhere to these principles are called RESTful services.
 
--   Addressability
--   Stateless
--   Connectability
--   Uniform Interface
+- Addressability
+- Stateless
+- Connectability
+- Uniform Interface
 
 ## Addressability
 
@@ -29,7 +29,7 @@ All information provided has a unique address expressed as a URI.
 
 Ex) [Shopify Retrive a single product API](https://shopify.dev/api/admin-rest/2022-07/resources/product#get-products-product-id)
 
--   /admin/api/2022-07/products/{product_id}.json
+- /admin/api/2022-07/products/{product_id}.json
 
 You can access item detail infomation from this url that has a directory structure.
 

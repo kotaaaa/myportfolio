@@ -1,9 +1,10 @@
 ---
 title: Template of Extracting API response data to BigQuery with Terraform
-date: '2022-08-30'
-techStack: ["Python", "GCP", "BigQuery", "Terraform", "Cloud PubSub", "Cloud Functions"]
+date: "2022-08-30"
+techStack:
+  ["Python", "GCP", "BigQuery", "Terraform", "Cloud PubSub", "Cloud Functions"]
 category: Cloud Computing
-background: '#ffa500'
+background: "#ffa500"
 image: img/api-to-bigquery/diagram.drawio.svg
 ---
 
@@ -25,19 +26,19 @@ This case is suitable for smaller projects, where there is no need to manage com
 
 # Entire Source Code
 
--   [api-to-bigquery-template](https://github.com/kotaaaa/api-to-bigquery-template)
+- [api-to-bigquery-template](https://github.com/kotaaaa/api-to-bigquery-template)
 
 # Technologys
 
--   [Cloud Function (Python3.7)](https://cloud.google.com/functions): to write Python code to write API client and BigQuery client.
--   [BigQuery](https://cloud.google.com/bigquery): save API raw data to BigQuery Table
--   [Cloud Pub/Sub](https://cloud.google.com/pubsub): Queues used as data relay points
--   [Cloud Scheduler](https://cloud.google.com/scheduler): set to run process regularly.
--   [Google Cloud Storage](https://cloud.google.com/storage): bucket to save tf state file.
+- [Cloud Function (Python3.7)](https://cloud.google.com/functions): to write Python code to write API client and BigQuery client.
+- [BigQuery](https://cloud.google.com/bigquery): save API raw data to BigQuery Table
+- [Cloud Pub/Sub](https://cloud.google.com/pubsub): Queues used as data relay points
+- [Cloud Scheduler](https://cloud.google.com/scheduler): set to run process regularly.
+- [Google Cloud Storage](https://cloud.google.com/storage): bucket to save tf state file.
 
 # Data source
 
--   [tmdb api document](https://www.themoviedb.org/documentation/api)
+- [tmdb api document](https://www.themoviedb.org/documentation/api)
 
 In this sample, I am using [trending endpoint](https://developers.themoviedb.org/3/trending/get-trending), please check this response json schema, as I am pre-define BigQuery table schema in below's tf config files.
 and add TMDB_KEY environment variable in `.env` file.
@@ -53,7 +54,7 @@ In this sample, I created gcs bucket called "collecting-tf-state". then I save t
 
 # Before we do
 
--   GCP project is required. If you does not have, please create it.
+- GCP project is required. If you does not have, please create it.
 
 # Terraform setting files
 
