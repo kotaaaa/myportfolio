@@ -15,7 +15,7 @@ const ProfileSection = () => {
   const researchUrl = "https://kotaaaa.github.io/rhp/";
   return (
     <div className="profile-section grid grid-cols-1 md:grid-cols-2 h-screen justify-center items-center">
-      <div className="flex justify-center items-center hidden md:flex">
+      <div className="flex justify-center items-center md:flex">
         <Image
           className="rounded-full"
           src={profileImg}
