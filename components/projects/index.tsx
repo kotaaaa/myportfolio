@@ -34,7 +34,7 @@ const ProjectItem = ({ content }: {
 }) => {
     return (
         <>
-            <h3 className="py-2 text-3xl bold">
+            <h3 className="py-2 text-3xl bold hover:underline">
                 <Link href={content.link}>{content.title}</Link>
             </h3>
             <p className="py-2">
