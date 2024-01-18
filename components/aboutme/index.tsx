@@ -62,7 +62,7 @@ const ProfileSection = () => {
           </div>
         </div>
         <div className="mx-auto max-w-screen-md justify-center content-center">
-          <p className="py-4 lg:mb-10 font-light text-center text-gray-500 sm:text-xl">
+          <p className="py-4 lg:mb-10 font-light text-left text-gray-500 sm:text-xl">
             Hi! I am Kota Kawaguchi who is Software Developer <br /> with 4+ years experience living in <strong>Vancouver</strong>. 
             <br/>
             My expertise field is <strong>Backend</strong> / <strong>DevOps</strong> / <strong>Cloud</strong> / <strong>Full Stack</strong>.
