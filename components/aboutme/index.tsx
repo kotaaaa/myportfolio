@@ -96,20 +96,20 @@ const frameworks: Icon[] = [
   { src: "/icons/fastapi.svg", label: "FastAPI", content: "Experienced for 1+ years, FastAPI is my favorite api framework for Python as easy to set up a server, include type definitions, implement asynchronous communication and highly extensible. And also we can output API documentation by default." },
   { src: "/icons/react.svg", label: "React", content: "Experienced for 2+ years. Created component with react hook such as useState, useRouter, useEffect, and context. In order to create SSR based app, utilized Next.js for routing and caching. This site is also built with Next.js (2024, Jan)." },
   { src: "/icons/springboot.svg", label: "SpringBoot", content: "Experienced for 2+ years. We used it for back-end services for our internal tools. Annotation with lombok. I have created a robust backend API by utilizing Controller-Service-Repository pattern." },
-  { src: "/icons/airflow.svg", label: "Apache Airflow", content: "Experienced for 2+ years. used Apache Airflow to create a workflow in order to connect with external APIs from other retail companies. In total, we have completed integrations with 6 APIs, including the Shopify API, which includes a RESTful API and a form of GraphQL. I lead the project to upgrade from Airflow version 1.x to 2.x." },
+  { src: "/icons/airflow.svg", label: "Apache Airflow", content: "Experienced for 2+ years. used Apache Airflow to create a workflow in order to connect with external APIs from other retail companies. Completed integrations with several APIs such as the Shopify API, including interfaces to RESTfulAPI and GraphQL, and led the project to upgrade Airflow from version 1.x to series 2.x" },
   { src: "/icons/vue.svg", label: "Vue", content: "Experienced for 2+ years, added some component for item detail page. As global data management library, Vuex was used. For SSR, we used Nuxt.js for entire app." },
 ];
 
 const cloud: Icon[] = [
-  { src: "/icons/aws.svg", label: "Amazon Web Service", content: "Experienced for 2+ years. I have used Amazon SQS, Amazon S3, and EKS when creating APIs for external customers with authentication to manage internal providers. Experienced in production logging, including checking AWS ALB logs and issuing SQL against logs from AWS Athena to monitor customer facing APIs. In addition, I have developed green field development of front-end login and API authentication functionality using Amazon Cognito and AWS amplify. Associate Certification, and is familiar with AWS services.", certificate: "https://www.credly.com/badges/e1f8c8a8-2e0b-4716-a034-5a233a9c6b48/linked_in_profile", certificateLogo: "/icons/aws-cert.png" },
-  { src: "/icons/gcp.svg", label: "Google Cloud", content: "Experienced for 2+ years. I have experience developing back-end batch applications using Cloud Composer (Apache Airflow). We have developed a system to periodically synchronize data from external APIs to our marketplace. I have also developed APIs using Flask and Cloud Run, and created automated processes for API calls using Google App Script, Cloud Scheduler, and Cloud Function. I am a certified GCP Associate Cloud Engineer and am familiar with all GCP services.", certificate: "https://www.credential.net/f0e91b5b-37a6-4257-b6cb-d983a8458e65?key=4bdeaa38e98b672109444214a4665b1a3d32836eceaefe2c1eb0969d8129a188", certificateLogo: "/icons/gcp-cert.png" },
+  { src: "/icons/aws.svg", label: "Amazon Web Service", content: "Experienced for 2+ years. I have used Amazon SQS, Amazon S3, and EKS when creating APIs for external customers with authentication to manage internal providers. Experienced in production logging, including checking AWS ALB logs and issuing SQL against logs from AWS Athena to monitor customer facing APIs. In addition, I have developed green field development of front-end login and API authentication functionality using Amazon Cognito and AWS amplify. I am a certified AWS Solutions Architect – Associate.", certificate: "https://www.credly.com/badges/e1f8c8a8-2e0b-4716-a034-5a233a9c6b48/linked_in_profile", certificateLogo: "/icons/aws-cert.png" },
+  { src: "/icons/gcp.svg", label: "Google Cloud", content: "Experienced for 2+ years. I have experience developing back-end batch applications using Cloud Composer (Apache Airflow). We have developed a system to periodically synchronize data from external APIs to our marketplace. I have also developed APIs using Flask and Cloud Run, and created automated processes for API calls using Google App Script, Cloud Scheduler, and Cloud Function. I am a certified GCP Associate Cloud Engineer.", certificate: "https://www.credential.net/f0e91b5b-37a6-4257-b6cb-d983a8458e65?key=4bdeaa38e98b672109444214a4665b1a3d32836eceaefe2c1eb0969d8129a188", certificateLogo: "/icons/gcp-cert.png" },
 ]
 
 const middleware: Icon[] = [
   { src: "/icons/kubernetes.svg", label: "Kubernetes", content: "Experienced for 3+ years. Kubernetes was used to run more than 15 services in production, with experience scaling out and scaling down PODs in production. I am familiar with Kubernetes services such as Deployment, Service, Configmap, etc. I have also created my own simple service using Kubernetes from scratch to deepen my understanding." },
   { src: "/icons/datadog.svg", label: "Datadog", content: "Experienced for 3+ years. I have created a dashboard to view APMs such as CPU, Memory, Latency, etc. in Datadog. I also used Datadog for load testing and production resource monitoring, and added a setting to send slack notifications when anomalous values occur. We also used Datadog's Log explorer feature to monitor API logs." },
   { src: "/icons/linux.svg", label: "Linux", content: "Experienced for 5+ years. I have been working with Linux servers since I was a university student and have worked with debian and ubuntu servers. I am experienced in monitoring server resources using top command, etc. I am also good at simple text processing using awk, sort, uniq, etc." },
-  { src: "/icons/jenkins.svg", label: "Jenkins", content: "Experienced for 2+ years. I created CI/CD using Jenkins for deploying API applications and batch applications. I also used Jenkins to automate manual tasks on production on-premise servers, such as changing Nginx upstream, etc. I created a CI/CD with logic for Blue/Green deployments." },
+  { src: "/icons/jenkins.svg", label: "Jenkins", content: "Experienced for 2+ years. I created CI/CD for Blue/Green deployments using Jenkins for deploying API applications and batch applications. I also used Jenkins to automate manual tasks on production on-premise servers, such as changing Nginx upstream, etc." },
   { src: "/icons/nginx.svg", label: "Nginx", content: "Experienced for 2+ years. Nginx was used for the production web server, and I worked through the upstream and server configurations to change the direction to the backend API." },
   { src: "/icons/looker.svg", label: "Looker" , content: "We used Looker to create dashboards of table data in conjunction with BigQuery tables. Specifically, I created Model and View files for each dashboard." },  
 ];
@@ -119,10 +119,16 @@ const IconList = ({ icons }: IconListProps) => {
     <>
       {icons.map((icon, index) => (
         <div key={index} className="relative group hover:cursor-pointer p-10 flex flex-col items-center text-left gap-2">
-          <Image src={icon.src} width={100} height={100} alt={icon.label} />
-          {icon.certificate && (<Link href={icon.certificate}>
-            <a><Image src={icon.certificateLogo!}  width={50} height={50} alt={icon.label} /></a>
-          </Link>)}          
+          <div className="flex items-center space-x-4">
+            <Image src={icon.src} width={100} height={100} alt={icon.label} />
+            {icon.certificate && (
+              <Link href={icon.certificate}>
+                <a>
+                  <Image src={icon.certificateLogo!} width={50} height={50} alt={`${icon.label} certificate`} />
+                </a>
+              </Link>
+            )}
+          </div>
           <p className=''>{icon.label}</p>
           <p>{icon.content}</p>
 
