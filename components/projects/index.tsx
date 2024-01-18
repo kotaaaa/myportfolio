@@ -34,8 +34,8 @@ const ProjectItem = ({ content }: {
 }) => {
     return (
         <>
-            <h3 className="py-2 text-3xl underline">
-                {content.title}
+            <h3 className="py-2 text-3xl bold">
+                <Link href={content.link}>{content.title}</Link>
             </h3>
             <p className="py-2">
                 {content.contents}
@@ -50,11 +50,6 @@ const ProjectItem = ({ content }: {
                     </span>
                 ))}
             </p>
-            <Link href={content.link}>
-                <a className="py-2 hover:underline hover:cursor-pointer">
-                    more..
-                </a>
-            </Link>
         </>
     );
 };
