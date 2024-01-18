@@ -1,5 +1,5 @@
 // components/Footer.js
-
+import Image from 'next/image';
 const Footer = () => {
   return (
     <footer className="bg-white px-2 sm:px-4 py-3 bottom-0 left-0 w-full z-20 flex border-t-4 border-gray-900">
@@ -7,20 +7,29 @@ const Footer = () => {
         <div>
           {/* Copyright */}
           <p>© {new Date().getFullYear()} Kota Kawaguchi</p>
-          <p>All Rights Reserved</p>
         </div>
         <div>
           {/* Contact & SNS */}
-          <p>Contact: kota.k.1132.pda@gmail.com</p>
-          <ul className="flex space-x-4">
+          <ul className="flex gap-5 justify-end">
             <li>
-              <a href="https://twitter.com/kotaaaa1110" className="hover:underline">Twitter</a>
+              <a href="mailto:kota.k.1132.pda@gmail.com" className="hover:underline">
+                <Image src="/logos/mail.svg" width={25} height={25} alt="mail" />
+              </a>
             </li>
             <li>
-              <a href="https://github.com/kotaaaa" className="hover:underline">GitHub</a>
+              <a href="https://twitter.com/kotaaaa1110" className="hover:underline">
+                <Image src="/logos/x.svg" width={25} height={25} alt="x" />
+              </a>
             </li>
             <li>
-              <a href="https://www.linkedin.com/in/kota1110/" className="hover:underline">LinkedIn</a>
+              <a href="https://github.com/kotaaaa" className="hover:underline">
+                <Image src="/logos/github.svg" width={25} height={25} alt="github" />
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/kota1110/" className="hover:underline">
+                <Image src="/logos/linkedin.svg" width={25} height={25} alt="linkedin" />
+              </a>
             </li>
           </ul>
         </div>

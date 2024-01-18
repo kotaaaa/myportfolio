@@ -9,7 +9,7 @@ import { NextPage } from 'next';
 
 // ProfileSection Component
 const ProfileSection = () => {
-  const profileImg = "/profile.png";
+  const profileImg = "/profile.jpg";
   const linkedinUrl = "https://www.linkedin.com/in/kota1110/";
   const gitHubUrl = "https://github.com/kotaaaa";
   const researchUrl = "https://kotaaaa.github.io/rhp/";
@@ -28,7 +28,7 @@ const ProfileSection = () => {
       <div className="">
         <div className="">
           <div className="py-4">
-            <p className="text-center text-5xl py-1 font-bold">Hey, It's Kota 👋</p>
+            <p className="text-center text-4xl py-1 font-bold">Hi, It's Kota </p>
             <p className="text-center text-xl py-1">Full Stack Developer</p>
           </div>
           <div className="py-1 flex content-center justify-center">
@@ -152,7 +152,7 @@ const SkillSection = () => {
       <p className="py-2 mb-2 text-xl tracking-tight text-center text-gray-900">
         Middleware / Others
       </p >   
-      <div className="flex content-center justify-center">
+      <div className="flex justify-center">
         <IconList icons={middleware}/>
       </div>
     </div>
@@ -167,7 +167,7 @@ const CertificationSection = () => {
       <h1 className="py-2 mt-12 mb-2 text-4xl tracking-tight font-black text-center text-gray-900">
         Certification
       </h1 >   
-      <div className="flex content-center justify-center pb-8">
+      <div className="flex justify-center pb-8">
         <div className="tooltip mr-3" onMouseEnter={() => setHoverMessage('Python')} onMouseLeave={() => setHoverMessage('')}>
           <Link href="https://www.credly.com/badges/e1f8c8a8-2e0b-4716-a034-5a233a9c6b48/linked_in_profile">
             <a><Image src="/icons/aws-cert.png" width={50} height={50} alt="aws" /></a>

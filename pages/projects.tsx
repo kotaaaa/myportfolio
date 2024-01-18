@@ -5,7 +5,7 @@ import Projects from "../components/projects";
 const Home: NextPage = () => {
   return (
     <>
-      <section id="projects" className="py-20">
+      <section id="projects" className="py-10">
         <Projects />
       </section>
     </>

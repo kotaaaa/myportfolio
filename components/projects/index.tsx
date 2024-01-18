@@ -10,8 +10,14 @@ interface IProjectsContents {
 
 const projectsContents: IProjectsContents[] = [
     {
+        title: "Nishiki",
+        contents: "Nishiki manages the inventory of your fridge for both you and your partner. I developed a frontend component with Authentication with AWS amplify and Amazon Cognito.",
+        link: "https://github.com/genesis-tech-tribe/nishiki-frontend",
+        techStack: ["Next.js", "Amazon Cognito", "Radix", "TypeScript","React.js","AWS"]
+    },
+    {
         title: "Messaging Bot Integration with Kubernetes(GKE)",
-        contents: "Simple TODO management bot with Kubernetes Cluster",
+        contents: "I created a system small messaging bot from scratch using Kubernetes on GKE. I built with each Kubernetes object so I could get a full sense of the system hosted by Kubernetes.",
         link: "https://github.com/kotaaaa/linebot",
         techStack: ["Python", "Kubernetes", "GCP"]
     },

@@ -5,7 +5,7 @@ import Contact from "../components/contact";
 const Home: NextPage = () => {
   return (
     <>
-      <section id="contact" className="py-20">
+      <section id="contact" className="py-10">
         <Contact />
       </section>
     </>

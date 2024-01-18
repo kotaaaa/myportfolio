@@ -2,7 +2,7 @@ import { ISection } from "../type/section";
 
 const category: ISection[] = [
   {
-    link: "/about",
+    link: "/",
     title: "About",
   },
   {
