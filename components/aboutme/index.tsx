@@ -28,7 +28,7 @@ const ProfileSection = () => {
       <div className="">
         <div className="">
           <div className="py-4">
-            <p className="text-center text-4xl py-1 font-bold">Hi, It's Kota </p>
+            <p className="text-center text-2xl py-1 font-bold"> Kota Kawaguchi </p>
             <p className="text-center text-xl py-1">Full Stack Developer</p>
           </div>
           <div className="py-1 flex content-center justify-center">
