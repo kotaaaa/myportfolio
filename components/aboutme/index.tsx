@@ -14,7 +14,7 @@ const ProfileSection = () => {
   const gitHubUrl = "https://github.com/kotaaaa";
   const researchUrl = "https://kotaaaa.github.io/rhp/";
   return (
-    <div className="profile-section grid grid-cols-1 md:grid-cols-2 h-screen justify-center items-center">
+    <div className="profile-section grid grid-cols-1 pt-20 sm:pt-0 sm:grid-cols-2 sm:h-screen justify-center items-center">
       <div className="flex justify-center items-center md:flex">
         <Image
           className="rounded-full"
