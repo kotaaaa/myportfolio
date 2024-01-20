@@ -88,7 +88,7 @@ type IconListProps = {
 
 const programmingLanguage: Icon[] = [
   { src: "/icons/python.svg", label: "Python", content: "Experienced for 5+ years. I mainly started writing Python for Web application development with Django. and then, NLP Research with Pandas, numpy, sklearn framework when I was a master student. I attended to Internship program as Yahoo! Japan research to analyze user generated data; user log or text data from Twitter, and used Python. In addition, I created workflow with Apache Airflow and APIs with Flask." },
-  { src: "/icons/typescript.svg", label: "Typescript", content: "Experienced for 3+ years, Added some component with React and Angular and unit test code with Jest for e-commerce site and company’s internal tool with authentication function. In addition, I created Next.js v14 app from scratch with Typescript and Jest." }, 
+  { src: "/icons/typescript.svg", label: "Typescript/Javascript", content: "Experienced for 3+ years, Added some component with React and Vue.js and unit test code with Jest for e-commerce site and company’s internal tool with authentication function. In addition, I created Next.js v14 app from scratch with Typescript and Jest." }, 
   { src: "/icons/java.svg", label: "Java", content: "Experienced for 2+ years, established a robust backend system of e-commerce site with SpringBoot by utilizing Controller-Service-Repository pattern. And developed batch system with SpringBatch by utilizing Template design pattern from System Design Pattern. I am familiar with package management tool such as Gradle." },
 ];
 
