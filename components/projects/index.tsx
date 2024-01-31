@@ -26,6 +26,12 @@ const projectsContents: IProjectsContents[] = [
         contents: "In graduate school, I engaged in research on natural language processing and published my achievement at peer-reviewed international conferences. ",
         link: "https://dl.acm.org/doi/10.1145/3358695.3360931",
         techStack: ["NLP", "AI", "Python"]
+    }, 
+    {
+        title: "ELT pipeline from scratch",
+        contents: "Simple data pipeline and data warehouse deployed with Iac(Terraform)",
+        link: "https://github.com/kotaaaa/api-to-bigquery-template",
+        techStack: ["BigQuery", "Terraform", "Cloud Scheduler", "Cloud Pub/Sub"]
     }
 ]
 
